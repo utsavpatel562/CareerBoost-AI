@@ -44,6 +44,7 @@ Follow these steps to get the project up and running on your local machine.
    cd CareerBoost-AI
 
 ### 📂 Project Structure
+```bash
 /ai-mock-interview-app
 |-- /components        # React components
 |-- /pages             # Next.js pages
@@ -54,6 +55,7 @@ Follow these steps to get the project up and running on your local machine.
 |-- next.config.js     # Next.js configuration
 |-- package.json       # Project dependencies and scripts
 |-- README.md          # Project documentation
+```
 
 ### 📜 License
 This project is licensed under the MIT License. See the LICENSE file for details.
