@@ -5,7 +5,7 @@ export default function Home() {
   <>
   <div>
     <h2>Utsav Patel</h2>
-    <Button/>
+    <Button>My BTN</Button>
   </div>
   </>  
   );
