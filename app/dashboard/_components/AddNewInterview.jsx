@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { Button } from "../../../components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -28,13 +29,19 @@ function AddNewInterview() {
           </h2>
         </div>
         <Dialog open={openDialog}>
-          <DialogTrigger>Open</DialogTrigger>
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Are you absolutely sure?</DialogTitle>
               <DialogDescription>
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
+                <div>
+                  <h2>Tell us more about your job interviwing</h2>
+                </div>
+                <div className="flex gap-5 justify-end">
+                  <Button variant="ghost" onClick={() => setOpenDialog(false)}>
+                    Cancel
+                  </Button>
+                  <Button>Start Interview</Button>
+                </div>
               </DialogDescription>
             </DialogHeader>
           </DialogContent>
