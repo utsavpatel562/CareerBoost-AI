@@ -6,7 +6,7 @@ function DashboardLayout({ children }) {
     <>
       <div
         style={{
-          backgroundImage: "url('/gradient4.jpg')",
+          backgroundImage: "url('/gradient7.jpg')",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "100%",

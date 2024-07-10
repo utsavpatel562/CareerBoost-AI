@@ -17,7 +17,7 @@ const AddNewInterview = () => {
           style={{
             background: "rgba(31,30,30,0.5)",
             boxShadow: "1px solid rgba(110,110,110,0.25)",
-            backdropFilter: "blur( 10px )",
+            backdropFilter: "blur( 8px )",
           }}
         >
           <h2 className="font-bold text-lg text-center text-white">
