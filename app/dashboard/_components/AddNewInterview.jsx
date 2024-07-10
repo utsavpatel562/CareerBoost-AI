@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -8,7 +9,8 @@ import {
   DialogTrigger,
 } from "../../../components/ui/dialog";
 
-const AddNewInterview = () => {
+function AddNewInterview() {
+  const [openDialog, setOpenDialog] = useState(false);
   return (
     <>
       <div>
@@ -19,12 +21,13 @@ const AddNewInterview = () => {
             boxShadow: "1px solid rgba(110,110,110,0.25)",
             backdropFilter: "blur( 8px )",
           }}
+          onClick={() => setOpenDialog(true)}
         >
           <h2 className="font-bold text-lg text-center text-white">
             Add New +
           </h2>
         </div>
-        <Dialog>
+        <Dialog open={openDialog}>
           <DialogTrigger>Open</DialogTrigger>
           <DialogContent>
             <DialogHeader>
@@ -39,6 +42,6 @@ const AddNewInterview = () => {
       </div>
     </>
   );
-};
+}
 
 export default AddNewInterview;
