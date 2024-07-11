@@ -29,12 +29,17 @@ function AddNewInterview() {
           </h2>
         </div>
         <Dialog open={openDialog}>
-          <DialogContent>
+          <DialogContent className="max-w-2xl">
             <DialogHeader>
-              <DialogTitle>Are you absolutely sure?</DialogTitle>
+              <DialogTitle className="text-gray-700 text-2xl">
+                Tell us more about your job interviwing
+              </DialogTitle>
               <DialogDescription>
                 <div>
-                  <h2>Tell us more about your job interviwing</h2>
+                  <h2>
+                    Add Details about your job position/role, Job description
+                    and years of experience
+                  </h2>
                 </div>
                 <div className="flex gap-5 justify-end">
                   <Button variant="ghost" onClick={() => setOpenDialog(false)}>
