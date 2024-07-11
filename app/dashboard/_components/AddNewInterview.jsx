@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { Button } from "../../../components/ui/button";
+import { Input } from "../../../components/ui/input";
+import { Textarea } from "../../../components/ui/textarea";
 import {
   Dialog,
   DialogContent,
@@ -12,6 +14,9 @@ import {
 
 function AddNewInterview() {
   const [openDialog, setOpenDialog] = useState(false);
+  const [jobPosition, setJobPosition] = useState();
+  const [jobDesc, setJobDesc] = useState();
+  const [JobExperience, setJobExperience] = useState();
   return (
     <>
       <div>
@@ -35,18 +40,50 @@ function AddNewInterview() {
                 Tell us more about your job interviwing
               </DialogTitle>
               <DialogDescription>
-                <div>
-                  <h2>
-                    Add Details about your job position/role, Job description
-                    and years of experience
-                  </h2>
-                </div>
-                <div className="flex gap-5 justify-end">
-                  <Button variant="ghost" onClick={() => setOpenDialog(false)}>
-                    Cancel
-                  </Button>
-                  <Button>Start Interview</Button>
-                </div>
+                <form>
+                  <div>
+                    <h2>
+                      Add Details about your job position/role, Job description
+                      and years of experience
+                    </h2>
+                    <div className="mt-7 my-3">
+                      <label>Job Role / Job Position</label>
+                      <Input
+                        placeholder="Ex. Full Stack Developer"
+                        required
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div className="my-3">
+                      <label>Job Description / Tech Stack </label>
+                      <Textarea
+                        placeholder="Ex. ReactJS, NextJS, TypeScript, Java, Python etc."
+                        autocomplete="off"
+                        required
+                      />
+                    </div>
+                    <div className="my-3">
+                      <label>Years of experience</label>
+                      <Input
+                        placeholder="Ex. 5"
+                        type="number"
+                        autocomplete="off"
+                        required
+                        max="50"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex gap-5 justify-end">
+                    <Button
+                      variant="ghost"
+                      onClick={() => setOpenDialog(false)}
+                      type="button"
+                    >
+                      Cancel
+                    </Button>
+                    <Button type="submit">Start Interview</Button>
+                  </div>
+                </form>
               </DialogDescription>
             </DialogHeader>
           </DialogContent>
