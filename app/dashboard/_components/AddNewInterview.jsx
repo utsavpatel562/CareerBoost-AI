@@ -17,6 +17,11 @@ function AddNewInterview() {
   const [jobPosition, setJobPosition] = useState();
   const [jobDesc, setJobDesc] = useState();
   const [JobExperience, setJobExperience] = useState();
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(jobPosition, jobDesc, JobExperience);
+  };
   return (
     <>
       <div>
@@ -40,7 +45,7 @@ function AddNewInterview() {
                 Tell us more about your job interviwing
               </DialogTitle>
               <DialogDescription>
-                <form>
+                <form onSubmit={onSubmit}>
                   <div>
                     <h2>
                       Add Details about your job position/role, Job description
@@ -52,6 +57,7 @@ function AddNewInterview() {
                         placeholder="Ex. Full Stack Developer"
                         required
                         autocomplete="off"
+                        onChange={(event) => setJobPosition(event.target.value)}
                       />
                     </div>
                     <div className="my-3">
@@ -60,6 +66,7 @@ function AddNewInterview() {
                         placeholder="Ex. ReactJS, NextJS, TypeScript, Java, Python etc."
                         autocomplete="off"
                         required
+                        onChange={(event) => setJobDesc(event.target.value)}
                       />
                     </div>
                     <div className="my-3">
@@ -70,6 +77,9 @@ function AddNewInterview() {
                         autocomplete="off"
                         required
                         max="50"
+                        onChange={(event) =>
+                          setJobExperience(event.target.value)
+                        }
                       />
                     </div>
                   </div>
