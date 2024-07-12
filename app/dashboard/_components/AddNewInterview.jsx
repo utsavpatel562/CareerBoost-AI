@@ -11,7 +11,12 @@ import {
   DialogTitle,
 } from "../../../components/ui/dialog";
 import { chatSession } from "../../../utils/GeminiAIModal";
+import { db } from "../../../utils/db";
 import { LoaderCircle } from "lucide-react";
+import { MockInterview } from "../../../utils/schema";
+import { v4 as uuidv4 } from "uuid";
+import { useUser } from "@clerk/nextjs";
+import moment from "moment/moment";
 
 function AddNewInterview() {
   const [openDialog, setOpenDialog] = useState(false);
@@ -20,6 +25,8 @@ function AddNewInterview() {
   const [JobExperience, setJobExperience] = useState();
 
   const [loading, setLoading] = useState(false);
+  const [JsonResponse, setJsonResponse] = useState([]);
+  const { user } = useUser();
 
   const onSubmit = async (e) => {
     setLoading(true);
@@ -43,6 +50,29 @@ function AddNewInterview() {
       .replace("```json", "")
       .replace("```", "");
     console.log(JSON.parse(MockJsonResp));
+    setJsonResponse(MockJsonResp);
+
+    if (MockJsonResp) {
+      const resp = await db
+        .insert(MockInterview)
+        .values({
+          mockId: uuidv4(),
+          jsonMockResp: MockJsonResp,
+          jobPosition: jobPosition,
+          jobDesc: jobDesc,
+          jobExperience: JobExperience,
+          createdBy: user?.primaryEmailAddress?.emailAddress,
+          createdAt: moment().format("DD-MM-yyyy"),
+        })
+        .returning({ mockId: MockInterview.mockId });
+
+      console.log("Inserted ID: ", resp);
+      if (resp) {
+        setOpenDialog(false);
+      }
+    } else {
+      console.log("ERROR!!! CHECK YOUR CODE UTSAV");
+    }
     setLoading(false);
   };
   return (
@@ -75,17 +105,23 @@ function AddNewInterview() {
                       and years of experience
                     </h2>
                     <div className="mt-7 my-3">
-                      <label>Job Role / Job Position</label>
+                      <label className="text-gray-600 font-bold">
+                        Job Role / Job Position
+                      </label>
                       <Input
                         placeholder="Ex. Full Stack Developer"
                         required
                         autocomplete="off"
                         onChange={(event) => setJobPosition(event.target.value)}
+                        className="mt-2 bg-slate-100 focus-visible:border-none hover:1px border-gray-400"
                       />
                     </div>
                     <div className="my-3">
-                      <label>Job Description / Tech Stack </label>
+                      <label className="text-gray-600 font-bold">
+                        Job Description / Tech Stack{" "}
+                      </label>
                       <Textarea
+                        className="mt-2 bg-slate-100 focus-visible:border-none hover:1px border-gray-400"
                         placeholder="Ex. ReactJS, NextJS, TypeScript, Java, Python etc."
                         autocomplete="off"
                         required
@@ -93,8 +129,11 @@ function AddNewInterview() {
                       />
                     </div>
                     <div className="my-3">
-                      <label>Years of experience</label>
+                      <label className="text-gray-600 font-bold">
+                        Years of experience
+                      </label>
                       <Input
+                        className="mt-2 bg-slate-100 mb-5 focus-visible:border-none hover:1px border-gray-400"
                         placeholder="Ex. 5"
                         type="number"
                         autocomplete="off"
@@ -112,7 +151,7 @@ function AddNewInterview() {
                       onClick={() => setOpenDialog(false)}
                       type="button"
                     >
-                      Cancel
+                      Close
                     </Button>
                     <Button type="submit" disabled={loading}>
                       {loading ? (
