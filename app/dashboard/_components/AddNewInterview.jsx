@@ -11,6 +11,7 @@ import {
   DialogTitle,
 } from "../../../components/ui/dialog";
 import { chatSession } from "../../../utils/GeminiAIModal";
+import { LoaderCircle } from "lucide-react";
 
 function AddNewInterview() {
   const [openDialog, setOpenDialog] = useState(false);
@@ -18,7 +19,10 @@ function AddNewInterview() {
   const [jobDesc, setJobDesc] = useState();
   const [JobExperience, setJobExperience] = useState();
 
+  const [loading, setLoading] = useState(false);
+
   const onSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     console.log(jobPosition, jobDesc, JobExperience);
 
@@ -34,7 +38,12 @@ function AddNewInterview() {
       " interview question along with answer in JSON format, give me question and answer field on JSON.";
 
     const result = await chatSession.sendMessage(InputPrompt);
-    console.log(result.response.text());
+    const MockJsonResp = result.response
+      .text()
+      .replace("```json", "")
+      .replace("```", "");
+    console.log(JSON.parse(MockJsonResp));
+    setLoading(false);
   };
   return (
     <>
@@ -105,7 +114,16 @@ function AddNewInterview() {
                     >
                       Cancel
                     </Button>
-                    <Button type="submit">Start Interview</Button>
+                    <Button type="submit" disabled={loading}>
+                      {loading ? (
+                        <>
+                          <LoaderCircle className="animate-spin" />
+                          'Generating from AI'
+                        </>
+                      ) : (
+                        "Start Interview"
+                      )}
+                    </Button>
                   </div>
                 </form>
               </DialogDescription>
