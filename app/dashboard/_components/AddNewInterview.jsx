@@ -21,6 +21,17 @@ function AddNewInterview() {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(jobPosition, jobDesc, JobExperience);
+
+    const InputPrompt =
+      "Job Position: " +
+      jobPosition +
+      ", Job Description: " +
+      jobDesc +
+      ", Years of Experience: " +
+      JobExperience +
+      ". Depends on Job Position, Job Description & Years of Experience give me the " +
+      process.env.NEXT_PUBLIC_INTERVIEW_QUESTION_COUNT +
+      " interview question along with answer in JSON format, give me question and answer field on JSON.";
   };
   return (
     <>
