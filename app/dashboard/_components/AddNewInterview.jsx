@@ -9,8 +9,8 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "../../../components/ui/dialog";
+import { chatSession } from "../../../utils/GeminiAIModal";
 
 function AddNewInterview() {
   const [openDialog, setOpenDialog] = useState(false);
@@ -18,7 +18,7 @@ function AddNewInterview() {
   const [jobDesc, setJobDesc] = useState();
   const [JobExperience, setJobExperience] = useState();
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     console.log(jobPosition, jobDesc, JobExperience);
 
@@ -32,6 +32,9 @@ function AddNewInterview() {
       ". Depends on Job Position, Job Description & Years of Experience give me the " +
       process.env.NEXT_PUBLIC_INTERVIEW_QUESTION_COUNT +
       " interview question along with answer in JSON format, give me question and answer field on JSON.";
+
+    const result = await chatSession.sendMessage(InputPrompt);
+    console.log(result.response.text());
   };
   return (
     <>
