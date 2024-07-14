@@ -19,7 +19,7 @@ module.exports = {
     extend: {
       colors: {
         red:{
-          1: "#7e22ce"
+          1: "#f02d3a"
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -27,7 +27,7 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#ef4444",
+          DEFAULT: "#f02d3a",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
