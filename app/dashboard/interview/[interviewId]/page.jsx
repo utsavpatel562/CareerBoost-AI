@@ -101,7 +101,7 @@ function Interview({ params }) {
                 <WebcamIcon className="w-full h-64 rounded-lg my-7 p-20 bg-secondary text-black border" />
                 <Button
                   onClick={() => setWebCamEnabled(true)}
-                  className="w-full"
+                  className="w-full bg-blue-700 hover:bg-blue-600"
                 >
                   Enable Web Cam and Microphone
                 </Button>
@@ -110,7 +110,9 @@ function Interview({ params }) {
           </div>
         </div>
         <div className="flex justify-end items-end">
-          <Button>Start</Button>
+          <Button className="bg-blue-700 hover:bg-blue-600">
+            Start Interview
+          </Button>
         </div>
       </div>
     </>
