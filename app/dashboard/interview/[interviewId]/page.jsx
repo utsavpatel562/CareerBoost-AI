@@ -71,13 +71,15 @@ function Interview({ params }) {
                 boxShadow: "0px 0px 14px -8px #000",
               }}
             >
-              <h2 className="flex gap-2 items-center">
-                <Lightbulb />
-                <strong>Information</strong>
-              </h2>
-              <h2 className="text-justify">
-                {process.env.NEXT_PUBLIC_INFORMATION}
-              </h2>
+              <div className="p-5 border rounded-lg border-yellow-400 bg-yellow-200 text-black">
+                <h2 className="flex gap-2 items-center">
+                  <Lightbulb />
+                  <strong>Information</strong>
+                </h2>
+                <h2 className="text-justify">
+                  {process.env.NEXT_PUBLIC_INFORMATION}
+                </h2>
+              </div>
             </div>
           </div>
           <div>
@@ -95,7 +97,10 @@ function Interview({ params }) {
             ) : (
               <>
                 <WebcamIcon className="w-full h-64 rounded-lg my-7 p-20 bg-secondary text-black border" />
-                <Button onClick={() => setWebCamEnabled(true)}>
+                <Button
+                  onClick={() => setWebCamEnabled(true)}
+                  className="w-full"
+                >
                   Enable Web Cam and Microphone
                 </Button>
               </>
