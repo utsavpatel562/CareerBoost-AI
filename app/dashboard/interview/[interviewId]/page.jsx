@@ -39,7 +39,7 @@ function Interview({ params }) {
             <div
               className="flex flex-col rounded-lg p-3 gap-4"
               style={{
-                background: "rgba( 8, 52, 103, 0.4 )",
+                background: "rgba( 114, 113, 113, 0.25 )",
                 backdropFilter: "blur(8px)",
                 boxShadow: "0px 0px 14px -8px #000",
               }}
@@ -66,7 +66,7 @@ function Interview({ params }) {
             <div
               className="flex flex-col rounded-lg p-3 gap-4"
               style={{
-                background: "rgba( 8, 52, 103, 0.4 )",
+                background: "rgba( 114, 113, 113, 0.25 )",
                 backdropFilter: "blur(8px)",
                 boxShadow: "0px 0px 14px -8px #000",
               }}
