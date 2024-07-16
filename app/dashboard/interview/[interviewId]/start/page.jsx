@@ -1,7 +1,11 @@
 import React from "react";
 
-const page = () => {
-  return <div>page</div>;
-};
+function StartInterview() {
+  return (
+    <>
+      <div>Start Interview</div>
+    </>
+  );
+}
 
-export default page;
+export default StartInterview;
