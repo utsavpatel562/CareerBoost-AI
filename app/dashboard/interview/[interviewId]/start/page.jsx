@@ -1,10 +1,14 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { MockInterview } from "../../../../../utils/schema";
 import { db } from "../../../../../utils/db";
 import { eq } from "drizzle-orm";
+import QuestionSection from "./_components/QuestionSection";
 
 function StartInterview({ params }) {
+  const [interviewData, setInterviewData] = useState();
+  const [mockInterviewQuestion, setMockInterviewQuestion] = useState();
+
   useEffect(() => {
     GetInterviewDetails();
   }, []);
@@ -15,6 +19,10 @@ function StartInterview({ params }) {
         .select()
         .from(MockInterview)
         .where(eq(MockInterview.mockId, params.interviewId));
+
+      const jsonMockResp = JSON.parse(result[0].jsonMockResp);
+      console.log(jsonMockResp);
+      setMockInterviewQuestion(jsonMockResp);
       setInterviewData(result[0]);
     } catch (error) {
       console.error("Error fetching interview details:", error);
@@ -22,7 +30,13 @@ function StartInterview({ params }) {
   };
   return (
     <>
-      <div>Start Interview</div>
+      <div>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {/* Questions */}
+          <QuestionSection mockInterviewQuestion={mockInterviewQuestion} />
+          {/* Video / Audio Recording */}
+        </div>
+      </div>
     </>
   );
 }
