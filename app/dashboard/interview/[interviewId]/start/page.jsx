@@ -8,6 +8,7 @@ import QuestionSection from "./_components/QuestionSection";
 function StartInterview({ params }) {
   const [interviewData, setInterviewData] = useState();
   const [mockInterviewQuestion, setMockInterviewQuestion] = useState();
+  const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
 
   useEffect(() => {
     GetInterviewDetails();
@@ -33,7 +34,10 @@ function StartInterview({ params }) {
       <div>
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* Questions */}
-          <QuestionSection mockInterviewQuestion={mockInterviewQuestion} />
+          <QuestionSection
+            mockInterviewQuestion={mockInterviewQuestion}
+            activeQuestionIndex={activeQuestionIndex}
+          />
           {/* Video / Audio Recording */}
         </div>
       </div>
