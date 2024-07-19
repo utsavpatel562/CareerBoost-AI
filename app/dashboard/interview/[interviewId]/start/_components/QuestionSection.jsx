@@ -23,10 +23,13 @@ function QuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
           <h2 className="my-5 text-md md:text-lg">
             {mockInterviewQuestion[activeQuestionIndex]?.question}
           </h2>
-          <div className="border rounded-lg p-5 bg-blue-100">
-            <h2 className="flex gap-2 items-center">
+          <div className="border rounded-lg p-5 bg-blue-100 mt-14">
+            <h2 className="flex gap-2 items-center text-blue-700">
               <Lightbulb />
               <strong>Note:</strong>
+            </h2>
+            <h2 className="text-sm text-blue-700 my-2">
+              {process.env.NEXT_PUBLIC_QUESTION_NOTE}
             </h2>
           </div>
         </div>
