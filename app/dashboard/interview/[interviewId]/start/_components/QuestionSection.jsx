@@ -1,10 +1,11 @@
+import { Lightbulb } from "lucide-react";
 import React from "react";
 
 function QuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
   return (
     mockInterviewQuestion && (
       <>
-        <div className="p-5 border rounded-lg bg-white my-5">
+        <div className="p-5 border rounded-lg bg-white my-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {mockInterviewQuestion &&
               mockInterviewQuestion.map((question, index) => (
@@ -19,9 +20,15 @@ function QuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
                 </h2>
               ))}
           </div>
-          <h2 className="my-5 text-sm md:text-md">
+          <h2 className="my-5 text-md md:text-lg">
             {mockInterviewQuestion[activeQuestionIndex]?.question}
           </h2>
+          <div className="border rounded-lg p-5 bg-blue-100">
+            <h2 className="flex gap-2 items-center">
+              <Lightbulb />
+              <strong>Note:</strong>
+            </h2>
+          </div>
         </div>
       </>
     )

@@ -82,17 +82,10 @@ function AddNewInterview() {
     <>
       <div>
         <div
-          className="p-10 border rounded-lg bg-secondary hover:scale-105 hover:shadow-md cursor-pointer transition-all"
-          style={{
-            background: "rgba(31,30,30,0.5)",
-            boxShadow: "1px solid rgba(110,110,110,0.25)",
-            backdropFilter: "blur( 8px )",
-          }}
+          className="p-10 border border-gray-300 rounded-lg bg-secondary hover:scale-105 hover:shadow-md cursor-pointer transition-all"
           onClick={() => setOpenDialog(true)}
         >
-          <h2 className="font-bold text-lg text-center text-white">
-            Add New +
-          </h2>
+          <h2 className="font-bold text-lg text-center">Add New +</h2>
         </div>
         <Dialog open={openDialog}>
           <DialogContent className="max-w-2xl">

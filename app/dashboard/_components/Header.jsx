@@ -11,14 +11,7 @@ function Header() {
   });
   return (
     <>
-      <div
-        className="flex p-4 items-center justify-between bg-black shadow-sm text-gray-200"
-        style={{
-          background: "rgba( 57, 56, 56, 0.25 )",
-          backdropFilter: "blur( 8px )",
-          border: "1px solid rgba( 255, 255, 255, 0.18 )",
-        }}
-      >
+      <div className="flex p-4 items-center justify-between bg-gray-900 shadow-sm text-gray-200">
         <Image
           src="/logo4.png"
           width={35}

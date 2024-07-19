@@ -33,28 +33,14 @@ function Interview({ params }) {
 
   return (
     <>
-      <div className="my-10 text-gray-50">
-        <h2
-          className="font-bold text-2xl"
-          style={{
-            textShadow: "3px 3px 6px rgba(10, 117, 55, 1)",
-          }}
-        >
-          Let's Get Started
-        </h2>
+      <div className="my-10 text-red-1">
+        <h2 className="font-bold text-2xl">Let's Get Started</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className="flex flex-col my-5 gap-4">
-            <div
-              className="flex flex-col rounded-lg p-3 gap-4"
-              style={{
-                background: "rgba( 114, 113, 113, 0.25 )",
-                backdropFilter: "blur(8px)",
-                boxShadow: "0px 0px 14px -8px #000",
-              }}
-            >
+            <div className="flex flex-col rounded-lg p-3 gap-4">
               {interviewData ? (
                 <>
-                  <div className="p-5 border rounded-lg border-yellow-400 bg-yellow-200 text-black">
+                  <div className="p-5 border rounded-lg border-yellow-200 bg-yellow-100 text-black">
                     <h2 className="text-lg">
                       <strong>Job Position: </strong>
                       {interviewData.jobPosition}
@@ -73,20 +59,13 @@ function Interview({ params }) {
                 <p>Loading interview details...</p>
               )}
             </div>
-            <div
-              className="flex flex-col rounded-lg p-3 gap-4"
-              style={{
-                background: "rgba( 114, 113, 113, 0.25 )",
-                backdropFilter: "blur(8px)",
-                boxShadow: "0px 0px 14px -8px #000",
-              }}
-            >
-              <div className="p-5 border rounded-lg border-yellow-400 bg-yellow-100 text-black">
-                <h2 className="flex gap-2 items-center text-yellow-500">
+            <div className="flex flex-col rounded-lg p-3 gap-4">
+              <div className="p-5 border rounded-lg border-blue-200 bg-blue-100 text-black">
+                <h2 className="flex gap-2 items-center text-blue-500">
                   <Lightbulb />
                   <strong>Information</strong>
                 </h2>
-                <h2 className="text-justify mt-3 text-yellow-500 font-bold">
+                <h2 className="text-justify mt-3 text-blue-500 font-bold">
                   {process.env.NEXT_PUBLIC_INFORMATION}
                 </h2>
               </div>
