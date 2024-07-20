@@ -4,6 +4,7 @@ import React from "react";
 import Webcam from "react-webcam";
 import { Button } from "../../../../../../components/ui/button";
 import useSpeechToText from "react-hook-speech-to-text";
+import { Mic } from "lucide-react";
 
 function RecordQuestionSection() {
   const {
@@ -32,24 +33,25 @@ function RecordQuestionSection() {
             mirrored={true}
             style={{
               height: 300,
-              width: 300,
-              zIndex: 300,
+              width: "100%",
+              zIndex: 100,
             }}
           />
         </div>
-        <Button variant="outline" className="my-10">
-          Record Answer
+        <Button
+          variant="outline"
+          className="my-10"
+          onClick={isRecording ? stopSpeechToText : startSpeechToText}
+        >
+          {isRecording ? (
+            <h2>
+              <Mic />
+              'Recording'
+            </h2>
+          ) : (
+            "Record Answer"
+          )}
         </Button>
-        <h1>Recording: {isRecording.toString()}</h1>
-        <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
-          {isRecording ? "Stop Recording" : "Start Recording"}
-        </button>
-        <ul>
-          {results.map((result) => (
-            <li key={result.timestamp}>{result.transcript}</li>
-          ))}
-          {interimResult && <li>{interimResult}</li>}
-        </ul>
       </div>
     </>
   );
