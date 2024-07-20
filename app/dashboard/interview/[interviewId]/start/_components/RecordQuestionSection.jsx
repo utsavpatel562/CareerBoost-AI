@@ -1,12 +1,13 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import { Button } from "../../../../../../components/ui/button";
 import useSpeechToText from "react-hook-speech-to-text";
 import { Mic } from "lucide-react";
 
 function RecordQuestionSection() {
+  const [userAnswer, setUserAnswer] = useState("");
   const {
     error,
     interimResult,
@@ -18,6 +19,13 @@ function RecordQuestionSection() {
     continuous: true,
     useLegacyResults: false,
   });
+
+  useEffect(() => {
+    results.map((result) => {
+      setUserAnswer((prevAnswer) => prevAnswer + result?.transcript);
+    });
+  }, [results]);
+
   return (
     <>
       <div className="flex items-center justify-center flex-col">
@@ -44,13 +52,16 @@ function RecordQuestionSection() {
           onClick={isRecording ? stopSpeechToText : startSpeechToText}
         >
           {isRecording ? (
-            <h2>
+            <h2 className="text-red-1 flex gap-2">
               <Mic />
-              'Recording'
+              Stop Recording...
             </h2>
           ) : (
             "Record Answer"
           )}
+        </Button>
+        <Button onClick={() => console.log(userAnswer)}>
+          Show User Answer
         </Button>
       </div>
     </>

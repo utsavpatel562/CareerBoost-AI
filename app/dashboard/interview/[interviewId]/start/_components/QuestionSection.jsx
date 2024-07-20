@@ -1,7 +1,15 @@
-import { Lightbulb } from "lucide-react";
+import { Lightbulb, Volume2 } from "lucide-react";
 import React from "react";
 
 function QuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
+  const textToSpeech = (text) => {
+    if ("speechSynthesis" in window) {
+      const speech = new SpeechSynthesisUtterance(text);
+      window.speechSynthesis.speak(speech);
+    } else {
+      alert("Sorry! Your browser does not suppoer text to speech ");
+    }
+  };
   return (
     mockInterviewQuestion && (
       <>
@@ -23,6 +31,12 @@ function QuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
           <h2 className="my-5 text-md md:text-lg">
             {mockInterviewQuestion[activeQuestionIndex]?.question}
           </h2>
+          <Volume2
+            className="cursor-pointer"
+            onClick={() =>
+              textToSpeech(mockInterviewQuestion[activeQuestionIndex]?.question)
+            }
+          />
           <div className="border rounded-lg p-5 bg-blue-100 mt-14">
             <h2 className="flex gap-2 items-center text-blue-700">
               <Lightbulb />
