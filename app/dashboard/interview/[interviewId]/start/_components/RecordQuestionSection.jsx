@@ -5,8 +5,9 @@ import Webcam from "react-webcam";
 import { Button } from "../../../../../../components/ui/button";
 import useSpeechToText from "react-hook-speech-to-text";
 import { Mic, StopCircle } from "lucide-react";
+import { toast } from "sonner";
 
-function RecordQuestionSection() {
+function RecordQuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
   const [userAnswer, setUserAnswer] = useState("");
   const {
     error,
@@ -29,8 +30,18 @@ function RecordQuestionSection() {
   const SaveUserAnswer = () => {
     if (isRecording) {
       stopSpeechToText();
+      if (userAnswer?.length < 10) {
+        toast("Error while saving your answer, please record again");
+        return;
+      }
+      const feedbackPrompt =
+        "Question:" +
+        mockInterviewQuestion[activeQuestionIndex]?.question +
+        ", User Answer: " +
+        userAnswer +
+        " ,Depends on question and user answer for give interview question";
     } else {
-      startSpeechToText;
+      startSpeechToText();
     }
   };
 
@@ -54,11 +65,7 @@ function RecordQuestionSection() {
             }}
           />
         </div>
-        <Button
-          variant="outline"
-          className="my-10"
-          onClick={isRecording ? stopSpeechToText : startSpeechToText}
-        >
+        <Button variant="outline" className="my-10" onClick={SaveUserAnswer}>
           {isRecording ? (
             <h2 className="text-red-1 flex animate-pulse items-center gap-2">
               <StopCircle />
