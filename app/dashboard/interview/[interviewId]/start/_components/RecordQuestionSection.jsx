@@ -57,7 +57,9 @@ function RecordQuestionSection() {
               Stop Recording...
             </h2>
           ) : (
-            "Record Answer"
+            <h2 className="flex gap-1">
+              <Mic /> Record Answer
+            </h2>
           )}
         </Button>
         <Button onClick={() => console.log(userAnswer)}>
