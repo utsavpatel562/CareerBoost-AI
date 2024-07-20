@@ -20,35 +20,35 @@ function Header() {
         />
         <ul className="hidden md:flex gap-6">
           <li
-            className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${
-              path == "/dashboard" && "text-primary font-bold"
+            className={`hover:text-gray-100 hover:bg-primary hover:rounded-sm hover:font-bold transition-all cursor-pointer p-2 ${
+              path == "/dashboard"
             }`}
           >
             Dashboard
           </li>
           <li
-            className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${
+            className={`hover:text-gray-100 hover:bg-primary hover:rounded-sm hover:font-bold transition-all cursor-pointer p-2 ${
               path == "/dashboard/resumebuilder" && "text-primary font-bold"
             }`}
           >
             Resume Builder
           </li>
           <li
-            className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${
+            className={`hover:text-gray-100 hover:bg-primary hover:rounded-sm hover:font-bold transition-all cursor-pointer p-2 ${
               path == "/dashboard/questions" && "text-primary font-bold"
             }`}
           >
             Questions
           </li>
           <li
-            className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${
+            className={`hover:text-gray-100 hover:bg-primary hover:rounded-sm hover:font-bold transition-all cursor-pointer p-2 ${
               path == "/dashboard/upgrade" && "text-primary font-bold"
             }`}
           >
             Upgrade
           </li>
           <li
-            className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${
+            className={`hover:text-gray-100 hover:bg-primary hover:rounded-sm hover:font-bold transition-all cursor-pointer p-2 ${
               path == "/dashboard/how" && "text-primary font-bold"
             }`}
           >
