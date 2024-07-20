@@ -39,7 +39,9 @@ function RecordQuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
         mockInterviewQuestion[activeQuestionIndex]?.question +
         ", User Answer: " +
         userAnswer +
-        " ,Depends on question and user answer for give interview question";
+        " ,Depends on question and user answer for give interview question" +
+        " please give us rating for answer and feedback as area of improvement" +
+        "in just 3 to 5 lines to improve it in JSON format with rating field and feedback field ";
     } else {
       startSpeechToText();
     }
