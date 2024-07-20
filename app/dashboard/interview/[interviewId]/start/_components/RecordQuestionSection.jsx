@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import { Button } from "../../../../../../components/ui/button";
 import useSpeechToText from "react-hook-speech-to-text";
-import { Mic } from "lucide-react";
+import { Mic, StopCircle } from "lucide-react";
 
 function RecordQuestionSection() {
   const [userAnswer, setUserAnswer] = useState("");
@@ -25,6 +25,14 @@ function RecordQuestionSection() {
       setUserAnswer((prevAnswer) => prevAnswer + result?.transcript);
     });
   }, [results]);
+
+  const SaveUserAnswer = () => {
+    if (isRecording) {
+      stopSpeechToText();
+    } else {
+      startSpeechToText;
+    }
+  };
 
   return (
     <>
@@ -52,12 +60,12 @@ function RecordQuestionSection() {
           onClick={isRecording ? stopSpeechToText : startSpeechToText}
         >
           {isRecording ? (
-            <h2 className="text-red-1 flex gap-2">
-              <Mic />
+            <h2 className="text-red-1 flex animate-pulse items-center gap-2">
+              <StopCircle />
               Stop Recording...
             </h2>
           ) : (
-            <h2 className="flex gap-1">
+            <h2 className="flex gap-2 items-center">
               <Mic /> Record Answer
             </h2>
           )}
