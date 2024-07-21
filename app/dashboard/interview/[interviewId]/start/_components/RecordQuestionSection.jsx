@@ -6,6 +6,7 @@ import { Button } from "../../../../../../components/ui/button";
 import useSpeechToText from "react-hook-speech-to-text";
 import { Mic, StopCircle } from "lucide-react";
 import { toast } from "sonner";
+import { chatSession } from "../../../../../../utils/GeminiAIModal";
 
 function RecordQuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
   const [userAnswer, setUserAnswer] = useState("");
@@ -27,7 +28,7 @@ function RecordQuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
     });
   }, [results]);
 
-  const SaveUserAnswer = () => {
+  const SaveUserAnswer = async () => {
     if (isRecording) {
       stopSpeechToText();
       if (userAnswer?.length < 10) {
@@ -42,6 +43,13 @@ function RecordQuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
         " ,Depends on question and user answer for give interview question" +
         " please give us rating for answer and feedback as area of improvement" +
         "in just 3 to 5 lines to improve it in JSON format with rating field and feedback field ";
+
+      const result = await chatSession.sendMessage(feedbackPrompt);
+      const mockJsonResp = result.response
+        .text()
+        .replace("```json", "")
+        .replace("```", "");
+      console.log(mockJsonResp);
     } else {
       startSpeechToText();
     }
