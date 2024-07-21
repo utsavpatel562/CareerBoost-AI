@@ -50,6 +50,7 @@ function RecordQuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
         .replace("```json", "")
         .replace("```", "");
       console.log(mockJsonResp);
+      const JsonFeedbackResp = JSON.parse(mockJsonResp);
     } else {
       startSpeechToText();
     }
