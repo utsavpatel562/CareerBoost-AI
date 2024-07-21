@@ -49,11 +49,6 @@ function RecordQuestionSection({
     if (isRecording) {
       stopSpeechToText();
       console.log(userAnswer);
-      if (userAnswer?.length < 10) {
-        setLoading(false);
-        toast("Error while saving your answer, please record again");
-        return;
-      }
     } else {
       startSpeechToText();
     }
@@ -62,7 +57,7 @@ function RecordQuestionSection({
   const UpdateUserAnswer = async () => {
     console.log(userAnswer);
     setLoading(true);
-    /*const feedbackPrompt =
+    const feedbackPrompt =
       "Question:" +
       mockInterviewQuestion[activeQuestionIndex]?.question +
       ", User Answer: " +
@@ -91,7 +86,7 @@ function RecordQuestionSection({
     });
     if (resp) {
       toast("User Answer Recorded successfully.");
-    }*/
+    }
     setUserAnswer("");
     setLoading(false);
   };
