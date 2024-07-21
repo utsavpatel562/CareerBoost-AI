@@ -7,9 +7,19 @@ import useSpeechToText from "react-hook-speech-to-text";
 import { Mic, StopCircle } from "lucide-react";
 import { toast } from "sonner";
 import { chatSession } from "../../../../../../utils/GeminiAIModal";
+import { db } from "../../../../../../utils/db";
+import { UserAnswer } from "../../../../../../utils/schema";
+import { useUser } from "@clerk/nextjs";
+import moment from "moment";
 
-function RecordQuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
+function RecordQuestionSection({
+  mockInterviewQuestion,
+  activeQuestionIndex,
+  interviewData,
+}) {
   const [userAnswer, setUserAnswer] = useState("");
+  const { user } = useUser();
+  const [loading, setLoading] = useState(false);
   const {
     error,
     interimResult,
@@ -30,8 +40,10 @@ function RecordQuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
 
   const SaveUserAnswer = async () => {
     if (isRecording) {
+      setLoading(true);
       stopSpeechToText();
       if (userAnswer?.length < 10) {
+        setLoading(false);
         toast("Error while saving your answer, please record again");
         return;
       }
@@ -51,6 +63,21 @@ function RecordQuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
         .replace("```", "");
       console.log(mockJsonResp);
       const JsonFeedbackResp = JSON.parse(mockJsonResp);
+
+      const resp = await db.insert(UserAnswer).values({
+        mockIdRef: interviewData?.mockId,
+        question: mockInterviewQuestion[activeQuestionIndex]?.question,
+        correctAns: mockInterviewQuestion[activeQuestionIndex]?.answer,
+        userAns: userAnswer,
+        feedback: JsonFeedbackResp?.feedback,
+        rating: JsonFeedbackResp?.rating,
+        userEmail: user?.primaryEmailAddress.emailAddress,
+        createdAt: moment().format("DD-MM-yyyy"),
+      });
+      if (resp) {
+        toast("User Answer Recorded successfully.");
+      }
+      setLoading(false);
     } else {
       startSpeechToText();
     }
@@ -76,7 +103,12 @@ function RecordQuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
             }}
           />
         </div>
-        <Button variant="outline" className="my-10" onClick={SaveUserAnswer}>
+        <Button
+          disabled={loading}
+          variant="outline"
+          className="my-10"
+          onClick={SaveUserAnswer}
+        >
           {isRecording ? (
             <h2 className="text-red-1 flex animate-pulse items-center gap-2">
               <StopCircle />
