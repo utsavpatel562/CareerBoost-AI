@@ -128,9 +128,6 @@ function RecordQuestionSection({
             </h2>
           )}
         </Button>
-        <Button onClick={() => console.log(userAnswer)}>
-          Show User Answer
-        </Button>
       </div>
     </>
   );
