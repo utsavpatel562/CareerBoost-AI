@@ -5,6 +5,7 @@ import { db } from "../../../../../utils/db";
 import { eq } from "drizzle-orm";
 import QuestionSection from "./_components/QuestionSection";
 import RecordQuestionSection from "./_components/RecordQuestionSection";
+import { Button } from "../../../../../components/ui/button";
 
 function StartInterview({ params }) {
   const [interviewData, setInterviewData] = useState();
@@ -45,6 +46,11 @@ function StartInterview({ params }) {
             activeQuestionIndex={activeQuestionIndex}
             interviewData={interviewData}
           />
+        </div>
+        <div className="flex justify-end gap-6">
+          {activeQuestionIndex > 0 && <Button>Previous Question</Button>}
+          <Button>Next Question</Button>
+          <Button>End Interview</Button>
         </div>
       </div>
     </>
