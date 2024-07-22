@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "CareerBoost-AI",
-  description: "Enrich your interview experience",
+  description: "Enrich your interview experience"
 };
 
 export default function RootLayout({ children }) {
