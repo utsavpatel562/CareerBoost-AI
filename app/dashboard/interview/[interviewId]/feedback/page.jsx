@@ -8,4 +8,4 @@ function Feedback() {
   );
 }
 
-export default page;
+export default Feedback;
