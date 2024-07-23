@@ -42,14 +42,22 @@ function Feedback({ params }) {
         </h2>
         {feedbackList &&
           feedbackList.map((item, index) => (
-            <Collapsible key={index}>
+            <Collapsible key={index} className="mt-3">
               <CollapsibleTrigger className="p-2 bg-secondary rounded-lg my-2 flex justify-between text-left gap-5 max-w-[900px]">
                 {item.question}
                 <ChevronsUpDown className="h-5 w-5" />
               </CollapsibleTrigger>
               <CollapsibleContent>
-                Yes. Free to use for personal and commercial projects. No
-                attribution required.
+                <div className="flex flex-col gap-2 max-w-[900px]">
+                  <h2 className="text-red-500 p-2 border rounded-lg">
+                    <strong>Rating: </strong>
+                    {item.rating}
+                  </h2>
+                  <h2 className="p-2 border rounded-lg bg-red-50 text-sm text-red-900">
+                    <strong>Your Answer: </strong>
+                    {item.userAns}
+                  </h2>
+                </div>
               </CollapsibleContent>
             </Collapsible>
           ))}
