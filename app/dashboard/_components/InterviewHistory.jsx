@@ -1,5 +1,4 @@
 "use client";
-
 import { useUser } from "@clerk/nextjs";
 import React, { useEffect, useState } from "react";
 import { db } from "../../../utils/db";
@@ -20,7 +19,7 @@ function InterviewHistory() {
       .select()
       .from(MockInterview)
       .where(
-        eq(MockInterview.createdAt, user?.primaryEmailAddress?.emailAddress)
+        eq(MockInterview.createdBy, user?.primaryEmailAddress?.emailAddress)
       )
       .orderBy(desc(MockInterview.id));
 
@@ -34,7 +33,7 @@ function InterviewHistory() {
       <div>
         {interviewList &&
           interviewList.map((interview, index) => (
-            <InterviewCard key={index} />
+            <InterviewCard interview={interview} key={index} />
           ))}
       </div>
     </div>
