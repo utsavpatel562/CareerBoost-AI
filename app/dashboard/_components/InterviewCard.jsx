@@ -11,11 +11,11 @@ function InterviewCard({ interview }) {
       <h2 className="text-xs text-gray-400">
         Created At: {interview?.createdAt}
       </h2>
-      <div className="flex justify-between mt-2">
-        <Button size="sm" variant="outline">
+      <div className="flex justify-between mt-2 gap-5">
+        <Button size="sm" variant="outline" className="w-full">
           Feedback
         </Button>
-        <Button size="sm" className="bg-blue-700 hover:bg-blue-800">
+        <Button size="sm" className="bg-blue-700 hover:bg-blue-800 w-full">
           Start
         </Button>
       </div>

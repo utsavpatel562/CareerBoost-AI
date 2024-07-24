@@ -4,7 +4,7 @@ import InterviewHistory from "./_components/InterviewHistory";
 function Dashboard() {
   return (
     <div className="p-10">
-      <h2 className="font-bold text-2xl text-red-1">Dashboard</h2>
+      <h2 className="font-extrabold text-2xl text-blue-700">Dashboard</h2>
       <h2 className="text-gray-500">
         Create and Start your AI Mockup Interview
       </h2>
