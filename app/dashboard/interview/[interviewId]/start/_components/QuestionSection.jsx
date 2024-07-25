@@ -21,7 +21,7 @@ function QuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
                   className={`p-2 border border-gray-400 rounded-full cursor-pointer text-xs md:text-sm text-center 
                   ${
                     activeQuestionIndex == index &&
-                    "bg-blue-700 text-white border border-blue-800"
+                    "bg-cyan-600 text-white border border-cyan-700"
                   }`}
                 >
                   Question #{index + 1}

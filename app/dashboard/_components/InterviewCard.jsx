@@ -13,15 +13,17 @@ function InterviewCard({ interview }) {
   };
 
   return (
-    <div className="border shadow-sm rounded-lg p-3">
-      <h2 className="font-bold text-blue-700">{interview?.jobPosition}</h2>
-      <h2 className="text-sm text-gray-500">
+    <div className="border shadow-sm rounded-lg p-3 bg-gray-900">
+      <h2 className="font-bold text-gray-300 text-lg">
+        {interview?.jobPosition}
+      </h2>
+      <h2 className="text-[16px] text-gray-400">
         {interview?.jobExperience} Years of Experience
       </h2>
       <h2 className="text-xs text-gray-400">
         Created At: {interview?.createdAt}
       </h2>
-      <div className="flex justify-between mt-2 gap-5">
+      <div className="flex justify-between mt-5 gap-3">
         <Button
           size="sm"
           variant="outline"
@@ -32,7 +34,7 @@ function InterviewCard({ interview }) {
         </Button>
         <Button
           size="sm"
-          className="bg-blue-700 hover:bg-blue-800 w-full"
+          className="bg-cyan-600 hover:bg-cyan-700 w-full"
           onClick={onStart}
         >
           Start
