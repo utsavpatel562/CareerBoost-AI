@@ -1,7 +1,7 @@
 "use client";
 import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
 function Header() {
@@ -9,6 +9,11 @@ function Header() {
   useEffect(() => {
     console.log(path);
   });
+  const router = useRouter();
+  const NaivgateToDashboard = () => {
+    router.push("/dashboard/");
+  };
+
   return (
     <>
       <div className="flex p-4 items-center justify-between bg-gray-900 shadow-sm text-gray-200">
@@ -20,39 +25,40 @@ function Header() {
         />
         <ul className="hidden md:flex gap-6">
           <li
-            className={`hover:text-gray-100 hover:bg-primary hover:rounded-sm hover:font-bold transition-all cursor-pointer p-2 ${
+            className={`hover:text-gray-100 hover:bg-blue-700 hover:rounded-sm hover:font-bold transition-all cursor-pointer p-2 ${
               path == "/dashboard"
             }`}
+            onClick={NaivgateToDashboard}
           >
             Dashboard
           </li>
           <li
-            className={`hover:text-gray-100 hover:bg-primary hover:rounded-sm hover:font-bold transition-all cursor-pointer p-2 ${
-              path == "/dashboard/resumebuilder" && "text-primary font-bold"
-            }`}
-          >
-            Resume Builder
-          </li>
-          <li
-            className={`hover:text-gray-100 hover:bg-primary hover:rounded-sm hover:font-bold transition-all cursor-pointer p-2 ${
-              path == "/dashboard/questions" && "text-primary font-bold"
+            className={`hover:text-gray-100 hover:bg-blue-700 hover:rounded-sm hover:font-bold transition-all cursor-pointer p-2 ${
+              path == "/dashboard/questions" && "text-blue-700 font-bold"
             }`}
           >
             Questions
           </li>
           <li
-            className={`hover:text-gray-100 hover:bg-primary hover:rounded-sm hover:font-bold transition-all cursor-pointer p-2 ${
-              path == "/dashboard/upgrade" && "text-primary font-bold"
+            className={`hover:text-gray-100 hover:bg-blue-700 hover:rounded-sm hover:font-bold transition-all cursor-pointer p-2 ${
+              path == "/dashboard/upgrade" && "text-blue-700 font-bold"
             }`}
           >
             Upgrade
           </li>
           <li
-            className={`hover:text-gray-100 hover:bg-primary hover:rounded-sm hover:font-bold transition-all cursor-pointer p-2 ${
-              path == "/dashboard/how" && "text-primary font-bold"
+            className={`hover:text-gray-100 hover:bg-blue-700 hover:rounded-sm hover:font-bold transition-all cursor-pointer p-2 ${
+              path == "/dashboard/how" && "text-blue-700 font-bold"
             }`}
           >
             How it works
+          </li>
+          <li
+            className={`hover:text-gray-100 hover:bg-blue-700 hover:rounded-sm hover:font-bold transition-all cursor-pointer p-2 ${
+              path == "/dashboard/resumebuilder" && "text-blue-700 font-bold"
+            }`}
+          >
+            About Developer
           </li>
         </ul>
         <UserButton />

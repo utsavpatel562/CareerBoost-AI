@@ -1,8 +1,10 @@
+import Header from "./dashboard/_components/Header";
+
 export default function Home() {
   return (
   <>
   <div>
-    <h2>Utsav Patel</h2>
+    <Header/>
   </div>
   </>  
   );
