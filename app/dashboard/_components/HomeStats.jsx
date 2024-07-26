@@ -4,12 +4,12 @@ const HomeStats = () => {
   return (
     <>
       <div className="text-center mt-4">
-        <h2 className="text-gray-800 font-extrabold text-[30px]">
+        <h2 className="text-gray-800 font-extrabold text-[30px] md:text-[40px]">
           What We Provide
         </h2>
       </div>
-      <div className="flex justify-center gap-7 p-7">
-        <div className="card bg-base-100 w-96 shadow-xl rounded-lg cursor-pointer">
+      <div className="flex flex-wrap justify-center gap-7 p-7">
+        <div className="card bg-base-100 w-full sm:w-72 md:w-80 lg:w-96 shadow-xl rounded-lg cursor-pointer">
           <figure>
             <img
               className="rounded-tr-lg rounded-tl-lg"
@@ -30,7 +30,7 @@ const HomeStats = () => {
             </p>
           </div>
         </div>
-        <div className="card bg-base-100 w-96 shadow-xl rounded-lg cursor-pointer">
+        <div className="card bg-base-100 w-full sm:w-72 md:w-80 lg:w-96 shadow-xl rounded-lg cursor-pointer">
           <figure>
             <img
               className="rounded-tr-lg rounded-tl-lg"
@@ -48,7 +48,7 @@ const HomeStats = () => {
             </p>
           </div>
         </div>
-        <div className="card bg-base-100 w-96 shadow-xl rounded-lg cursor-pointer">
+        <div className="card bg-base-100 w-full sm:w-72 md:w-80 lg:w-96 shadow-xl rounded-lg cursor-pointer">
           <figure>
             <img
               className="rounded-tr-lg rounded-tl-lg"
