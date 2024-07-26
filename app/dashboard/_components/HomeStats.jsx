@@ -1,4 +1,5 @@
 import React from "react";
+import { Tabs } from "../../../components/ui/tabs";
 
 const HomeStats = () => {
   return (
