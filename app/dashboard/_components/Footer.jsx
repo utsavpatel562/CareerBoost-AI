@@ -6,7 +6,7 @@ const Footer = () => {
       <img src="/logo3.png" alt="logo" width={200} className="m-auto my-4" />
       <p className="font-bold text-gray-300">NEXT.JS ❤️ - THE POWERFULL TECH</p>
       <p className="text-gray-500">
-        Copyright © {new Date().getFullYear()} - All right reserved
+        Copyright © {new Date().getFullYear()} - All right reserved by Utsav
       </p>
     </footer>
   );
