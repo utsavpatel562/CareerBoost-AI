@@ -97,7 +97,7 @@ function AddNewInterview() {
           <DialogContent className="max-w-2xl">
             <DialogHeader>
               <DialogTitle className="text-gray-700 text-2xl">
-                Tell us more about your job interviwing
+                Tell us more about your job interviewing
               </DialogTitle>
               <DialogDescription>
                 <form onSubmit={onSubmit}>
