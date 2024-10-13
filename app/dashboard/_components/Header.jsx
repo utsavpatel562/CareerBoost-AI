@@ -1,5 +1,7 @@
 "use client";
-import { SignIn, SignInButton, UserButton, useUser } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
+import { FaUser } from "react-icons/fa";
+import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
@@ -24,7 +26,7 @@ function Header() {
           height={35}
           alt="CareerBoost-AI Logo"
         />
-        <ul className="hidden md:flex gap-6">
+        <ul className="hidden md:flex gap-6 font-semibold">
           <li
             className={`hover:font-extrabold transition-all cursor-pointer p-2 ${
               path == "/dashboard"
@@ -56,7 +58,14 @@ function Header() {
             About Developer
           </li>
         </ul>
-        {isSignedIn ? <UserButton /> : <SignInButton />}
+        {isSignedIn ? (
+          <UserButton />
+        ) : (
+          <Button className="flex gap-2 justify-center bg-green-500 hover:bg-green-600 w-[100px]">
+            <SignInButton>Login</SignInButton>
+            <FaUser />
+          </Button>
+        )}
       </div>
     </>
   );
