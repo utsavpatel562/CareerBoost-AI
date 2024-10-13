@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
+import { AiOutlineUser } from "react-icons/ai";
+import { MdOutlineWidgets } from "react-icons/md";
 
 const HeroSection = () => {
   return (
@@ -34,13 +36,15 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-col md:flex-row gap-2 justify-center mt-6 md:mt-10">
             <Link href={"/sign-up"}>
-              <Button className="bg-slate-800 p-4 md:p-6 text-base md:text-md hover:bg-slate-700 rounded-lg">
+              <Button className="flex justify-center gap-2 bg-slate-800 p-4 md:p-6 text-base md:text-md hover:bg-slate-700 rounded-lg">
                 Register Now
+                <AiOutlineUser />
               </Button>
             </Link>
             <Link href={"/sign-up"}>
-              <Button className="bg-green-900 p-4 md:p-6 hover:bg-green-700 text-base md:text-md rounded-lg">
+              <Button className="flex justify-center gap-2 bg-green-900 p-4 md:p-6 hover:bg-green-700 text-base md:text-md rounded-lg">
                 Know More
+                <MdOutlineWidgets />
               </Button>
             </Link>
           </div>
