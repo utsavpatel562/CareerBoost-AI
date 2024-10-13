@@ -38,7 +38,7 @@ function Header() {
           />
           <ul className="hidden md:flex gap-6 font-semibold">
             <li
-              className={`hover:font-extrabold transition-all cursor-pointer p-2 ${
+              className={`font-extrabold transition-all cursor-pointer p-2 ${
                 path == "/dashboard"
               }`}
               onClick={NaivgateToDashboard}
@@ -46,7 +46,7 @@ function Header() {
               Home
             </li>
             <li
-              className={`hover:font-extrabold transition-all cursor-pointer p-2 ${
+              className={`font-extrabold transition-all cursor-pointer p-2 ${
                 path == "/dashboard"
               }`}
               onClick={NaivgateToDashboard}
@@ -54,14 +54,14 @@ function Header() {
               Dashboard
             </li>
             <li
-              className={`hover:font-extrabold transition-all cursor-pointer p-2 ${
+              className={`font-extrabold transition-all cursor-pointer p-2 ${
                 path == "/dashboard/how" && "text-cyan-700 font-bold"
               }`}
             >
               How it works
             </li>
             <li
-              className={`hover:font-extrabold transition-all cursor-pointer p-2 ${
+              className={`font-extrabold transition-all cursor-pointer p-2 ${
                 path == "/dashboard.aboutdeveloper" && "text-cyan-700 font-bold"
               }`}
             >
@@ -72,7 +72,7 @@ function Header() {
         {isSignedIn ? (
           <UserButton />
         ) : (
-          <Button className="flex gap-2 justify-center bg-green-500 hover:bg-green-600 w-[100px]">
+          <Button className="flex gap-2 justify-center bg-transparent font-bold text-black hover:bg-slate-800 hover:text-slate-300 w-[100px]">
             <SignInButton>Login</SignInButton>
             <FaUser />
           </Button>
