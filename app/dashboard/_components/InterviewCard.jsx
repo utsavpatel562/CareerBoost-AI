@@ -1,6 +1,5 @@
 import React from "react";
 import { Button } from "../../../components/ui/button";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 function InterviewCard({ interview }) {
@@ -13,34 +12,43 @@ function InterviewCard({ interview }) {
   };
 
   return (
-    <div className="border shadow-sm rounded-lg p-3 bg-gray-900">
-      <h2 className="font-bold text-gray-300 text-lg">
-        {interview?.jobPosition}
-      </h2>
-      <h2 className="text-[16px] text-gray-400">
-        {interview?.jobExperience} Years of Experience
-      </h2>
-      <h2 className="text-xs text-gray-400">
-        Created At: {interview?.createdAt}
-      </h2>
-      <div className="flex justify-between mt-5 gap-3">
-        <Button
-          size="sm"
-          variant="outline"
-          className="w-full"
-          onClick={onFeedbackPress}
-        >
-          Feedback
-        </Button>
-        <Button
-          size="sm"
-          className="bg-cyan-600 hover:bg-cyan-700 w-full"
-          onClick={onStart}
-        >
-          Start
-        </Button>
-      </div>
-    </div>
+    <>
+      <article className="overflow-hidden rounded-lg shadow transition hover:shadow-lg border-2 border-gray-400-1">
+        <div className="bg-white p-4 sm:p-6">
+          <time className="block text-xs text-gray-600">
+            {" "}
+            <span className="font-semibold">Created at:</span>
+            {interview?.createdAt}
+          </time>
+          <a href="#">
+            <h3 className="mt-0.5 text-lg text-gray-900 font-sans">
+              <span className="font-bold">Position -</span>
+              {interview?.jobPosition}
+            </h3>
+          </a>
+          <h3 className="text-md text-gray-900 font-sans">
+            <span className="font-bold">Years of Experience - </span>
+            {interview?.jobExperience}
+          </h3>
+          <div className="flex justify-between mt-5 gap-3">
+            <Button
+              size="sm"
+              className="w-full bg-slate-600 hover:bg-slate-700"
+              onClick={onFeedbackPress}
+            >
+              Feedback
+            </Button>
+            <Button
+              size="sm"
+              className="bg-green-600 hover:bg-green-700 w-full"
+              onClick={onStart}
+            >
+              Start
+            </Button>
+          </div>
+        </div>
+      </article>
+    </>
   );
 }
 

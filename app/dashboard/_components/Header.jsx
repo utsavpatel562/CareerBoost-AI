@@ -16,6 +16,9 @@ function Header() {
   const NaivgateToDashboard = () => {
     router.push("/dashboard/");
   };
+  const NaivgateToHome = () => {
+    router.push("/");
+  };
 
   return (
     <>
@@ -39,9 +42,9 @@ function Header() {
           <ul className="hidden md:flex gap-6 font-semibold">
             <li
               className={`font-extrabold transition-all cursor-pointer p-2 ${
-                path == "/dashboard"
+                path == "/"
               }`}
-              onClick={NaivgateToDashboard}
+              onClick={NaivgateToHome}
             >
               Home
             </li>
