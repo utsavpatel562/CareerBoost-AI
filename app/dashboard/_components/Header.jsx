@@ -22,6 +22,9 @@ function Header() {
   const NaivgateToaboutdeveloper = () => {
     router.push("/aboutdeveloper/");
   };
+  const NaivgateTohowitworks = () => {
+    router.push("/#howitworks");
+  };
 
   return (
     <>
@@ -61,8 +64,9 @@ function Header() {
             </li>
             <li
               className={`font-extrabold pr-4 pl-4 hover:bg-slate-800 hover:rounded-md hover:text-slate-200 transition-all cursor-pointer p-2 ${
-                path == "/dashboard/how" && "text-cyan-700 font-bold"
+                path == "/#howitworks" && "text-cyan-700 font-bold"
               }`}
+              onClick={NaivgateTohowitworks}
             >
               How it works
             </li>

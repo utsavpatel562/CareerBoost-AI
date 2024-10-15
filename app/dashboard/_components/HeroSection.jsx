@@ -42,7 +42,7 @@ const HeroSection = () => {
               </Button>
             </Link>
             <Link href={"/sign-up"}>
-              <Button className="flex justify-center gap-2 bg-green-900 p-4 md:p-6 hover:bg-green-700 text-base md:text-md rounded-lg">
+              <Button className="flex justify-center gap-2 bg-green-700 p-4 md:p-6 hover:bg-green-800 text-base md:text-md rounded-lg">
                 Know More
                 <MdOutlineWidgets />
               </Button>
