@@ -28,7 +28,7 @@ function AddNewInterview() {
   const [loading, setLoading] = useState(false);
   const [JsonResponse, setJsonResponse] = useState([]);
   const router = useRouter();
-  const { user } = useUser();
+  const { isSignedIn, user } = useUser();
 
   const onSubmit = async (e) => {
     setLoading(true);
@@ -81,18 +81,31 @@ function AddNewInterview() {
   return (
     <>
       <div>
-        <div
-          className="p-10 border border-gray-300 rounded-lg hover:scale-105 hover:shadow-md cursor-pointer transition-all"
-          onClick={() => setOpenDialog(true)}
-          style={{
-            background:
-              "radial-gradient(circle, rgba(80,42,78,1) 0%, rgba(19,30,53,1) 100%)",
-          }}
-        >
-          <h2 className="font-bold text-lg text-center text-white">
-            Add New +
-          </h2>
+        <div className="p-4 shadow-sm rounded-lg border-2 border-gray-200">
+          {isSignedIn && (
+            <div className="flex items-center space-x-4 my-5">
+              <div>
+                <h2 className="text-slate-800 font-bold text-lg">
+                  Your Name:{" "}
+                  <span className="font-normal">{user?.fullName}</span>
+                </h2>
+                <p className="text-slate-800 font-bold text-lg">
+                  Your Email:{" "}
+                  <span className="font-normal">
+                    {user?.primaryEmailAddress?.emailAddress}
+                  </span>
+                </p>
+              </div>
+            </div>
+          )}
+          <Button
+            onClick={() => setOpenDialog(true)}
+            className="w-full rounded-md bg-slate-600 hover:bg-slate-700"
+          >
+            Create New Interview +
+          </Button>
         </div>
+
         <Dialog open={openDialog}>
           <DialogContent className="max-w-2xl">
             <DialogHeader>
@@ -155,7 +168,11 @@ function AddNewInterview() {
                     >
                       Close
                     </Button>
-                    <Button type="submit" disabled={loading}>
+                    <Button
+                      type="submit"
+                      disabled={loading}
+                      className="bg-green-600 hover:bg-green-700"
+                    >
                       {loading ? (
                         <>
                           <LoaderCircle className="animate-spin" />
