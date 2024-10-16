@@ -1,6 +1,8 @@
 import React from "react";
 import { Button } from "../../../components/ui/button";
 import { useRouter } from "next/navigation";
+import { FaGraduationCap } from "react-icons/fa";
+import { MdOutlineWork } from "react-icons/md";
 
 function InterviewCard({ interview }) {
   const router = useRouter();
@@ -21,12 +23,18 @@ function InterviewCard({ interview }) {
             {interview?.createdAt}
           </time>
           <a href="#">
-            <h3 className="mt-0.5 text-lg text-gray-900 font-sans">
+            <h3 className="flex gap-1 mt-0.5 text-lg text-gray-900 font-sans">
+              <span className="p-1 rounded-sm">
+                <FaGraduationCap className="w-5 h-5" />
+              </span>
               <span className="font-bold">Position -</span>
               {interview?.jobPosition}
             </h3>
           </a>
-          <h3 className="text-md text-gray-900 font-sans">
+          <h3 className="flex gap-1 text-md text-gray-900 font-sans">
+            <span className="p-1 rounded-sm">
+              <MdOutlineWork className="w-5 h-5" />
+            </span>
             <span className="font-bold">Years of Experience - </span>
             {interview?.jobExperience}
           </h3>
