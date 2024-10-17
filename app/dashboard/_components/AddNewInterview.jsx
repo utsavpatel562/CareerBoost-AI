@@ -54,14 +54,15 @@ function AddNewInterview() {
     const rawResponse = await result.response.text();
     console.log("Raw Response:", rawResponse);
 
-    // Clean the response
-    let cleanedResponse = rawResponse
-      .replace(/```json/g, "")
-      .replace(/```/g, "")
-      .replace(/[\n\r]/g, "")
-      .replace(/\\n/g, "")
-      .replace(/[^\x20-\x7E]/g, "")
-      .trim(); // Trim any surrounding whitespace or new lines
+    // Clean the response using a regular expression to capture JSON content
+    const jsonMatch = rawResponse.match(/\{.*\}/s); // Looks for the JSON object within the response
+    let cleanedResponse = jsonMatch ? jsonMatch[0] : null;
+
+    if (!cleanedResponse) {
+      console.error("No valid JSON found in the response");
+      setLoading(false);
+      return;
+    }
 
     try {
       const MockJsonResp = JSON.parse(cleanedResponse); // Parse the cleaned JSON string
