@@ -11,6 +11,7 @@ import {
 import { ChevronsUpDown } from "lucide-react";
 import { Button } from "../../../../../components/ui/button";
 import { useRouter } from "next/navigation";
+import { MdOutlineDashboardCustomize } from "react-icons/md";
 
 function Feedback({ params }) {
   const [feedbackList, setFeedbackList] = useState([]);
@@ -84,9 +85,10 @@ function Feedback({ params }) {
         )}
         <Button
           onClick={() => router.replace("/dashboard")}
-          className="my-2 bg-blue-700 hover:bg-blue-800"
+          className="flex gap-1 my-4 bg-green-600 hover:bg-green-700"
         >
-          Go Home
+          Return to Dashboard
+          <MdOutlineDashboardCustomize className="w-4 h-4" />
         </Button>
       </div>
     </>

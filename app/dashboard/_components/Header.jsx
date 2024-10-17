@@ -5,6 +5,10 @@ import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
+import { AiFillHome } from "react-icons/ai";
+import { MdDashboardCustomize } from "react-icons/md";
+import { BsFillQuestionSquareFill } from "react-icons/bs";
+import { FaUserCircle } from "react-icons/fa";
 
 function Header() {
   const path = usePathname();
@@ -45,37 +49,49 @@ function Header() {
             height={35}
             alt="CareerBoost-AI Logo"
           />
-          <ul className="hidden md:flex gap-6 font-semibold">
+          <ul className="hidden md:flex gap-2 font-semibold">
             <li
-              className={`font-extrabold hover:bg-slate-800 hover:rounded-md hover:text-slate-200 pr-4 pl-4 text-center transition-all cursor-pointer p-2 ${
+              className={`flex gap-1 font-extrabold hover:bg-slate-800 hover:rounded-md hover:text-slate-200 pr-4 pl-4 text-center transition-all cursor-pointer p-2 ${
                 path == "/"
               }`}
               onClick={NaivgateToHome}
             >
+              <span className="p-1">
+                <AiFillHome className="w-4 h-4" />
+              </span>
               Home
             </li>
             <li
-              className={`font-extrabold pr-4 pl-4 hover:bg-slate-800 hover:rounded-md hover:text-slate-200 transition-all cursor-pointer p-2 ${
+              className={`flex gap-1 font-extrabold pr-4 pl-4 hover:bg-slate-800 hover:rounded-md hover:text-slate-200 transition-all cursor-pointer p-2 ${
                 path == "/dashboard"
               }`}
               onClick={NaivgateToDashboard}
             >
+              <span className="p-1">
+                <MdDashboardCustomize className="w-4 h-4" />
+              </span>
               Dashboard
             </li>
             <li
-              className={`font-extrabold pr-4 pl-4 hover:bg-slate-800 hover:rounded-md hover:text-slate-200 transition-all cursor-pointer p-2 ${
+              className={`flex gap-1 font-extrabold pr-4 pl-4 hover:bg-slate-800 hover:rounded-md hover:text-slate-200 transition-all cursor-pointer p-2 ${
                 path == "/#howitworks" && "text-cyan-700 font-bold"
               }`}
               onClick={NaivgateTohowitworks}
             >
+              <span className="p-1">
+                <BsFillQuestionSquareFill className="w-4 h-4" />
+              </span>
               How it works
             </li>
             <li
-              className={`font-extrabold pr-4 pl-4 hover:bg-slate-800 hover:rounded-md hover:text-slate-200 transition-all cursor-pointer p-2 ${
+              className={`flex gap-1 font-extrabold pr-4 pl-4 hover:bg-slate-800 hover:rounded-md hover:text-slate-200 transition-all cursor-pointer p-2 ${
                 path == "/aboutdeveloper" && "text-cyan-700 font-bold"
               }`}
               onClick={NaivgateToaboutdeveloper}
             >
+              <span className="p-1">
+                <FaUserCircle className="w-4 h-4" />
+              </span>
               About Developer
             </li>
           </ul>

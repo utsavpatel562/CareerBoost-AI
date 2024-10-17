@@ -34,7 +34,7 @@ function QuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
             {mockInterviewQuestion[activeQuestionIndex]?.question}
           </h2>
           <Button
-            className="flex gap-2 cursor-pointer bg-slate-700"
+            className="flex gap-2 cursor-pointer bg-slate-700 hover:bg-slate-600"
             onClick={() =>
               textToSpeech(mockInterviewQuestion[activeQuestionIndex]?.question)
             }
