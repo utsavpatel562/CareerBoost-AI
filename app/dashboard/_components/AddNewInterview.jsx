@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
 import { Textarea } from "../../../components/ui/textarea";
-import { MdOutlineEmail } from "react-icons/md";
-import { AiOutlineUser } from "react-icons/ai";
+import { IoMail } from "react-icons/io5";
+import { FaUser } from "react-icons/fa";
 import {
   Dialog,
   DialogContent,
@@ -89,13 +89,13 @@ function AddNewInterview() {
               <div>
                 <h2 className="flex gap-1 text-slate-800 font-bold text-lg">
                   <span className="p-1 rounded-sm">
-                    <AiOutlineUser />
+                    <FaUser />
                   </span>
                   <span className="font-normal">{user?.fullName}</span>
                 </h2>
                 <p className="flex gap-1 text-slate-800 font-bold text-lg">
                   <span className="p-1 rounded-sm">
-                    <MdOutlineEmail className="w-5 h-5" />
+                    <IoMail className="w-5 h-5" />
                   </span>
                   <span className="font-normal">
                     {user?.primaryEmailAddress?.emailAddress}

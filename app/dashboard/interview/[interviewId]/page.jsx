@@ -7,6 +7,7 @@ import { eq } from "drizzle-orm";
 import Webcam from "react-webcam";
 import { Lightbulb, WebcamIcon } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
+import { TbFileDescription } from "react-icons/tb";
 import Link from "next/link";
 
 function Interview({ params }) {
@@ -33,23 +34,28 @@ function Interview({ params }) {
 
   return (
     <>
-      <div className="my-10 text-red-1">
-        <h2 className="font-bold text-2xl">Let's Get Started</h2>
+      <div className="my-10 text-slate-800">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="flex flex-col my-5 gap-4">
+          <div className="bg-slate-100 flex flex-col my-5 gap-4 rounded-lg shadow-sm border">
+            <div className="pl-5 pt-5">
+              <h2 className="font-bold text-2xl">Let's Get Started</h2>
+            </div>
             <div className="flex flex-col rounded-lg p-3 gap-4">
               {interviewData ? (
                 <>
-                  <div className="p-5 border rounded-lg border-yellow-200 bg-yellow-100 text-black">
-                    <h2 className="text-lg">
+                  <div className="p-5 border rounded-lg bg-slate-800 text-black">
+                    <h2 className="text-lg text-slate-200">
+                      <strong>
+                        <TbFileDescription />
+                      </strong>
                       <strong>Job Position: </strong>
                       {interviewData.jobPosition}
                     </h2>
-                    <h2 className="text-lg">
+                    <h2 className="text-lg text-slate-200">
                       <strong>Job Description: </strong>
                       {interviewData.jobDesc}
                     </h2>
-                    <h2 className="text-lg">
+                    <h2 className="text-lg text-slate-200">
                       <strong>Years of Experience: </strong>
                       {interviewData.jobExperience}
                     </h2>

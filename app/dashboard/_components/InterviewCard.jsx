@@ -18,7 +18,6 @@ function InterviewCard({ interview }) {
       <article className="overflow-hidden rounded-lg shadow transition hover:shadow-lg border-2 border-gray-400-1">
         <div className="bg-white p-4 sm:p-6">
           <time className="block text-xs text-gray-600">
-            {" "}
             <span className="font-semibold">Created at:</span>
             {interview?.createdAt}
           </time>
