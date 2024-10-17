@@ -58,8 +58,16 @@ export default function Page() {
             <SignIn
               appearance={{
                 elements: {
-                  formButtonPrimary:
-                    "bg-red-1 hover:bg-purple-600 border-none text-sm",
+                  formButtonPrimary: {
+                    backgroundColor: "#22c55e",
+                    color: "#fff",
+                    padding: "10px 20px",
+                    borderRadius: "5px",
+                    border: "none",
+                    ":hover": {
+                      backgroundColor: "#16a34a",
+                    },
+                  },
                 },
               }}
             />
