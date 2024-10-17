@@ -55,40 +55,42 @@ function AddNewInterview() {
     console.log("Raw Response:", rawResponse);
 
     // Clean the response
-    let cleanedResponse = rawResponse
-      .replace(/```json/g, "")
-      .replace(/```/g, "")
-      .trim(); // Trim any surrounding whitespace or new lines
+    // Clean the response
+let cleanedResponse = rawResponse
+  .replace(/```json/g, "")
+  .replace(/```/g, "")
+  .replace(/[\n\r]/g, "")  // Remove newlines or carriage returns
+  .trim(); // Trim any surrounding whitespace or new lines
 
-    try {
-      const MockJsonResp = JSON.parse(cleanedResponse); // Parse the cleaned JSON string
-      console.log(MockJsonResp);
-      setJsonResponse(MockJsonResp);
+try {
+  const MockJsonResp = JSON.parse(cleanedResponse); // Parse the cleaned JSON string
+  console.log(MockJsonResp);
+  setJsonResponse(MockJsonResp);
 
-      if (MockJsonResp) {
-        const resp = await db
-          .insert(MockInterview)
-          .values({
-            mockId: uuidv4(),
-            jsonMockResp: cleanedResponse, // Store cleaned JSON string
-            jobPosition: jobPosition,
-            jobDesc: jobDesc,
-            jobExperience: JobExperience,
-            createdBy: user?.primaryEmailAddress?.emailAddress,
-            createdAt: moment().format("DD-MM-yyyy"),
-          })
-          .returning({ mockId: MockInterview.mockId });
+  if (MockJsonResp) {
+    const resp = await db
+      .insert(MockInterview)
+      .values({
+        mockId: uuidv4(),
+        jsonMockResp: cleanedResponse, // Store cleaned JSON string
+        jobPosition: jobPosition,
+        jobDesc: jobDesc,
+        jobExperience: JobExperience,
+        createdBy: user?.primaryEmailAddress?.emailAddress,
+        createdAt: moment().format("DD-MM-yyyy"),
+      })
+      .returning({ mockId: MockInterview.mockId });
 
-        console.log("Inserted ID: ", resp);
-        if (resp) {
-          setOpenDialog(false);
-          router.push("/dashboard/interview/" + resp[0]?.mockId);
-        }
-      }
-    } catch (error) {
-      console.error("Error parsing JSON:", error);
-      console.log("Cleaned Response:", cleanedResponse);
+    console.log("Inserted ID: ", resp);
+    if (resp) {
+      setOpenDialog(false);
+      router.push("/dashboard/interview/" + resp[0]?.mockId);
     }
+  }
+} catch (error) {
+  console.error("Error parsing JSON:", error);
+  console.log("Cleaned Response:", cleanedResponse);
+}
 
     setLoading(false);
   };
