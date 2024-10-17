@@ -3,14 +3,43 @@ import { Button } from "../../../components/ui/button";
 import { useRouter } from "next/navigation";
 import { FaGraduationCap } from "react-icons/fa";
 import { MdOutlineWork } from "react-icons/md";
+import { db } from "../../../utils/db"; // Import your database connection
+import { MockInterview } from "../../../utils/schema"; // Import your schema
+import { eq } from "drizzle-orm";
+import { FaTrashCan } from "react-icons/fa6";
 
-function InterviewCard({ interview }) {
+function InterviewCard({ interview, onDeleteSuccess }) {
   const router = useRouter();
+
   const onStart = () => {
     router.push("/dashboard/interview/" + interview?.mockId);
   };
+
   const onFeedbackPress = () => {
     router.push("/dashboard/interview/" + interview.mockId + "/feedback");
+  };
+
+  const onDelete = async () => {
+    const confirmation = window.confirm(
+      `Are you sure you want to delete the interview for ${interview?.jobPosition}?`
+    );
+
+    if (confirmation) {
+      try {
+        // Deleting the interview by its mockId using Drizzle ORM
+        const result = await db
+          .delete(MockInterview)
+          .where(eq(MockInterview.mockId, interview?.mockId)); // Correct deletion query syntax
+
+        console.log("Interview deleted successfully:", result);
+
+        if (onDeleteSuccess) {
+          onDeleteSuccess(interview?.mockId);
+        }
+      } catch (error) {
+        console.error("Error deleting interview:", error);
+      }
+    }
   };
 
   return (
@@ -37,7 +66,14 @@ function InterviewCard({ interview }) {
             <span className="font-bold">Years of Experience - </span>
             {interview?.jobExperience}
           </h3>
-          <div className="flex justify-between mt-5 gap-3">
+          <Button
+            size="sm"
+            className="bg-green-600 hover:bg-green-700 w-full mt-4"
+            onClick={onStart}
+          >
+            Start
+          </Button>
+          <div className="flex justify-between mt-2 gap-1">
             <Button
               size="sm"
               className="w-full bg-slate-600 hover:bg-slate-700"
@@ -47,10 +83,10 @@ function InterviewCard({ interview }) {
             </Button>
             <Button
               size="sm"
-              className="bg-green-600 hover:bg-green-700 w-full"
-              onClick={onStart}
+              className="bg-red-600 hover:bg-red-700 w-fit"
+              onClick={onDelete}
             >
-              Start
+              <FaTrashCan />
             </Button>
           </div>
         </div>
