@@ -5,9 +5,11 @@ import { db } from "../../../../utils/db";
 import { MockInterview } from "../../../../utils/schema";
 import { eq } from "drizzle-orm";
 import Webcam from "react-webcam";
-import { Lightbulb, WebcamIcon } from "lucide-react";
+import { FaCircleInfo } from "react-icons/fa6";
 import { Button } from "../../../../components/ui/button";
+import { MdWorkOutline } from "react-icons/md";
 import { TbFileDescription } from "react-icons/tb";
+import { LuCalendarDays } from "react-icons/lu";
 import Link from "next/link";
 
 function Interview({ params }) {
@@ -44,18 +46,24 @@ function Interview({ params }) {
               {interviewData ? (
                 <>
                   <div className="p-5 border rounded-lg bg-slate-800 text-black">
-                    <h2 className="text-lg text-slate-200">
-                      <strong>
-                        <TbFileDescription />
+                    <h2 className="flex gap-1 text-lg text-slate-200">
+                      <strong className="p-1">
+                        <MdWorkOutline className="w-5 h-5" />
                       </strong>
                       <strong>Job Position: </strong>
                       {interviewData.jobPosition}
                     </h2>
-                    <h2 className="text-lg text-slate-200">
+                    <h2 className="flex gap-1 text-lg text-slate-200">
+                      <strong className="p-1">
+                        <TbFileDescription className="w-5 h-5" />
+                      </strong>
                       <strong>Job Description: </strong>
                       {interviewData.jobDesc}
                     </h2>
-                    <h2 className="text-lg text-slate-200">
+                    <h2 className="flex gap-1 text-lg text-slate-200">
+                      <strong className="p-1">
+                        <LuCalendarDays className="w-5 h-5" />
+                      </strong>
                       <strong>Years of Experience: </strong>
                       {interviewData.jobExperience}
                     </h2>
@@ -66,12 +74,14 @@ function Interview({ params }) {
               )}
             </div>
             <div className="flex flex-col rounded-lg p-3 gap-4">
-              <div className="p-5 border rounded-lg border-blue-200 bg-blue-100 text-black">
-                <h2 className="flex gap-2 items-center text-blue-500">
-                  <Lightbulb />
+              <div className="p-5 border rounded-lg border-blue-200 bg-sky-100 text-black">
+                <h2 className="flex gap-1 items-center text-slate-700">
+                  <strong className="p-1">
+                    <FaCircleInfo className="w-5 h-5" />
+                  </strong>
                   <strong>Information</strong>
                 </h2>
-                <h2 className="text-justify mt-3 text-blue-500 font-bold">
+                <h2 className="text-justify mt-3 text-slate-700 font-bold">
                   {process.env.NEXT_PUBLIC_INFORMATION}
                 </h2>
               </div>
