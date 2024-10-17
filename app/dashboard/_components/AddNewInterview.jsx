@@ -49,37 +49,50 @@ function AddNewInterview() {
       " interview question along with answer in JSON format, give me question and answer field on JSON.";
 
     const result = await chatSession.sendMessage(InputPrompt);
-    const MockJsonResp = result.response
-      .text()
-      .replace("```json", "")
-      .replace("```", "");
-    console.log(JSON.parse(MockJsonResp));
-    setJsonResponse(MockJsonResp);
 
-    if (MockJsonResp) {
-      const resp = await db
-        .insert(MockInterview)
-        .values({
-          mockId: uuidv4(),
-          jsonMockResp: MockJsonResp,
-          jobPosition: jobPosition,
-          jobDesc: jobDesc,
-          jobExperience: JobExperience,
-          createdBy: user?.primaryEmailAddress?.emailAddress,
-          createdAt: moment().format("DD-MM-yyyy"),
-        })
-        .returning({ mockId: MockInterview.mockId });
+    // Log the raw response before parsing
+    const rawResponse = await result.response.text();
+    console.log("Raw Response:", rawResponse);
 
-      console.log("Inserted ID: ", resp);
-      if (resp) {
-        setOpenDialog(false);
-        router.push("/dashboard/interview/" + resp[0]?.mockId);
+    // Clean the response
+    let cleanedResponse = rawResponse
+      .replace(/```json/g, "")
+      .replace(/```/g, "")
+      .trim(); // Trim any surrounding whitespace or new lines
+
+    try {
+      const MockJsonResp = JSON.parse(cleanedResponse); // Parse the cleaned JSON string
+      console.log(MockJsonResp);
+      setJsonResponse(MockJsonResp);
+
+      if (MockJsonResp) {
+        const resp = await db
+          .insert(MockInterview)
+          .values({
+            mockId: uuidv4(),
+            jsonMockResp: cleanedResponse, // Store cleaned JSON string
+            jobPosition: jobPosition,
+            jobDesc: jobDesc,
+            jobExperience: JobExperience,
+            createdBy: user?.primaryEmailAddress?.emailAddress,
+            createdAt: moment().format("DD-MM-yyyy"),
+          })
+          .returning({ mockId: MockInterview.mockId });
+
+        console.log("Inserted ID: ", resp);
+        if (resp) {
+          setOpenDialog(false);
+          router.push("/dashboard/interview/" + resp[0]?.mockId);
+        }
       }
-    } else {
-      console.log("ERROR!!! CHECK YOUR CODE UTSAV");
+    } catch (error) {
+      console.error("Error parsing JSON:", error);
+      console.log("Cleaned Response:", cleanedResponse);
     }
+
     setLoading(false);
   };
+
   return (
     <>
       <div>

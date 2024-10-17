@@ -39,8 +39,8 @@ function Interview({ params }) {
   return (
     <>
       <div className="my-10 text-slate-800">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="bg-slate-100 flex flex-col my-5 gap-4 rounded-lg shadow-sm border">
+        <div className="flex flex-wrap gap-10">
+          <div className="bg-slate-100 flex flex-col my-5 gap-4 rounded-lg shadow-sm border md:w-[70%]">
             <div className="pl-5 pt-5">
               <h2 className="font-bold text-2xl">Let's Get Started</h2>
             </div>
