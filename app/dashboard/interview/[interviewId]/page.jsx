@@ -10,6 +10,8 @@ import { Button } from "../../../../components/ui/button";
 import { MdWorkOutline } from "react-icons/md";
 import { TbFileDescription } from "react-icons/tb";
 import { LuCalendarDays } from "react-icons/lu";
+import { MdOutlineVideocam } from "react-icons/md";
+import { VscDebugStart } from "react-icons/vsc";
 import Link from "next/link";
 
 function Interview({ params }) {
@@ -109,23 +111,30 @@ function Interview({ params }) {
                     className="w-[300px] h-[300px] rounded-lg my-7 p-14 bg-secondary text-black border"
                   />
                 </div>
-                <Button
-                  onClick={() => setWebCamEnabled(true)}
-                  className="w-full bg-blue-700 hover:bg-blue-600"
-                >
-                  Enable Web Cam and Microphone
-                </Button>
+                <div className="grid grid-cols-1 gap-2 place-items-center">
+                  <Button
+                    onClick={() => setWebCamEnabled(true)}
+                    className="md:w-[300px] gap-1 bg-green-600 hover:bg-green-500"
+                  >
+                    <MdOutlineVideocam className="w-5 h-5" />
+                    Enable Web Cam and Microphone
+                  </Button>
+                  <Link
+                    href={
+                      "/dashboard/interview/" + params.interviewId + "/start"
+                    }
+                  >
+                    <Button className="md:w-[300px] gap-1 bg-green-600 hover:bg-green-500">
+                      <VscDebugStart className="w-5 h-5" />
+                      Start Interview
+                    </Button>
+                  </Link>
+                </div>
               </>
             )}
           </div>
         </div>
-        <div className="flex justify-end items-end">
-          <Link href={"/dashboard/interview/" + params.interviewId + "/start"}>
-            <Button className="bg-blue-700 hover:bg-blue-600">
-              Start Interview
-            </Button>
-          </Link>
-        </div>
+        <div className="flex justify-end items-end"></div>
       </div>
     </>
   );

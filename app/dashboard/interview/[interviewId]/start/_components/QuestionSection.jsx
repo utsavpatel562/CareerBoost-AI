@@ -1,4 +1,6 @@
-import { Lightbulb, Volume2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Lightbulb } from "lucide-react";
+import { TbVolume } from "react-icons/tb";
 import React from "react";
 
 function QuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
@@ -21,7 +23,7 @@ function QuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
                   className={`p-2 border border-gray-400 rounded-full cursor-pointer text-xs md:text-sm text-center 
                   ${
                     activeQuestionIndex == index &&
-                    "bg-cyan-600 text-white border border-cyan-700"
+                    "bg-green-600 text-white border border-green-700"
                   }`}
                 >
                   Question #{index + 1}
@@ -31,12 +33,15 @@ function QuestionSection({ mockInterviewQuestion, activeQuestionIndex }) {
           <h2 className="my-5 text-md md:text-lg">
             {mockInterviewQuestion[activeQuestionIndex]?.question}
           </h2>
-          <Volume2
-            className="cursor-pointer"
+          <Button
+            className="flex gap-2 cursor-pointer bg-slate-700"
             onClick={() =>
               textToSpeech(mockInterviewQuestion[activeQuestionIndex]?.question)
             }
-          />
+          >
+            Question Audio
+            <TbVolume className="w-5 h-5" />
+          </Button>
           <div className="border rounded-lg p-5 bg-blue-100 mt-14">
             <h2 className="flex gap-2 items-center text-blue-700">
               <Lightbulb />

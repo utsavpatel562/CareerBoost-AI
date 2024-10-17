@@ -6,6 +6,9 @@ import { eq } from "drizzle-orm";
 import QuestionSection from "./_components/QuestionSection";
 import RecordQuestionSection from "./_components/RecordQuestionSection";
 import { Button } from "../../../../../components/ui/button";
+import { IoIosArrowBack } from "react-icons/io";
+import { MdNavigateNext } from "react-icons/md";
+
 import Link from "next/link";
 
 function StartInterview({ params }) {
@@ -51,8 +54,10 @@ function StartInterview({ params }) {
         <div className="flex justify-end gap-6">
           {activeQuestionIndex > 0 && (
             <Button
+              className="gap-1"
               onClick={() => setActiveQuestionIndex(activeQuestionIndex - 1)}
             >
+              <IoIosArrowBack className="w-4 h-4" />
               Previous Question
             </Button>
           )}
@@ -61,6 +66,7 @@ function StartInterview({ params }) {
               onClick={() => setActiveQuestionIndex(activeQuestionIndex + 1)}
             >
               Next Question
+              <MdNavigateNext className="w-5 h-5" />
             </Button>
           )}
           {activeQuestionIndex == mockInterviewQuestion?.length - 1 && (
