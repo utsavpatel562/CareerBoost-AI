@@ -23,71 +23,61 @@ import { useRouter } from "next/navigation";
 
 function AddNewInterview() {
   const [openDialog, setOpenDialog] = useState(false);
-  const [jobPosition, setJobPosition] = useState();
-  const [jobDesc, setJobDesc] = useState();
-  const [JobExperience, setJobExperience] = useState();
-
+  const [jobPosition, setJobPosition] = useState("");
+  const [jobDesc, setJobDesc] = useState("");
+  const [jobExperience, setJobExperience] = useState("");
   const [loading, setLoading] = useState(false);
   const [JsonResponse, setJsonResponse] = useState([]);
   const router = useRouter();
   const { isSignedIn, user } = useUser();
 
   const onSubmit = async (e) => {
-    setLoading(true);
     e.preventDefault();
-    console.log(jobPosition, jobDesc, JobExperience);
+    setLoading(true);
 
-    const InputPrompt =
-      "Job Position: " +
-      jobPosition +
-      ", Job Description: " +
-      jobDesc +
-      ", Years of Experience: " +
-      JobExperience +
-      ". Depends on Job Position, Job Description & Years of Experience give me the " +
-      process.env.NEXT_PUBLIC_INTERVIEW_QUESTION_COUNT +
-      " interview question along with answer in JSON format, give me question and answer field on JSON.";
-
-    const result = await chatSession.sendMessage(InputPrompt);
-
-    // Log the raw response before parsing
-    const rawResponse = await result.response.text();
-    console.log("Raw Response:", rawResponse);
-
-    // Clean the response
-    let cleanedResponse = rawResponse
-      .replace(/```json/g, "")
-      .replace(/```/g, "")
-      .trim(); // Trim any surrounding whitespace or new lines
+    const InputPrompt = `Job Position: ${jobPosition}, Job Description: ${jobDesc}, Years of Experience: ${jobExperience}. Depends on Job Position, Job Description & Years of Experience, give me the ${process.env.NEXT_PUBLIC_INTERVIEW_QUESTION_COUNT} interview questions along with answers in JSON format.`;
 
     try {
-      const MockJsonResp = JSON.parse(cleanedResponse); // Parse the cleaned JSON string
-      console.log(MockJsonResp);
+      // Get response from chat AI session
+      const result = await chatSession.sendMessage(InputPrompt);
+
+      // Log the raw response
+      const rawResponse = await result.response.text();
+      console.log("Raw Response:", rawResponse);
+
+      // Clean and parse the response
+      let cleanedResponse = rawResponse
+        .replace(/```json/g, "")
+        .replace(/```/g, "")
+        .trim();
+      const MockJsonResp = JSON.parse(cleanedResponse); // Parse JSON
+
+      // Optimistic UI Update (Show data immediately)
       setJsonResponse(MockJsonResp);
 
-      if (MockJsonResp) {
-        const resp = await db
-          .insert(MockInterview)
-          .values({
-            mockId: uuidv4(),
-            jsonMockResp: cleanedResponse, // Store cleaned JSON string
-            jobPosition: jobPosition,
-            jobDesc: jobDesc,
-            jobExperience: JobExperience,
-            createdBy: user?.primaryEmailAddress?.emailAddress,
-            createdAt: moment().format("DD-MM-yyyy"),
-          })
-          .returning({ mockId: MockInterview.mockId });
+      // Insert into DB
+      const resp = await db
+        .insert(MockInterview)
+        .values({
+          mockId: uuidv4(),
+          jsonMockResp: cleanedResponse, // Store cleaned JSON
+          jobPosition: jobPosition,
+          jobDesc: jobDesc,
+          jobExperience: jobExperience,
+          createdBy: user?.primaryEmailAddress?.emailAddress,
+          createdAt: moment().format("DD-MM-yyyy"),
+        })
+        .returning({ mockId: MockInterview.mockId });
 
-        console.log("Inserted ID: ", resp);
-        if (resp) {
-          setOpenDialog(false);
-          router.push("/dashboard/interview/" + resp[0]?.mockId);
-        }
+      console.log("Inserted ID: ", resp);
+
+      // After insertion, update UI and route to the new interview
+      if (resp) {
+        setOpenDialog(false);
+        router.push("/dashboard/interview/" + resp[0]?.mockId);
       }
     } catch (error) {
-      console.error("Error parsing JSON:", error);
-      console.log("Cleaned Response:", cleanedResponse);
+      console.error("Error parsing or inserting data:", error);
     }
 
     setLoading(false);
@@ -129,14 +119,14 @@ function AddNewInterview() {
           <DialogContent className="max-w-2xl">
             <DialogHeader>
               <DialogTitle className="text-gray-700 text-2xl">
-                Tell us more about your job interviewing
+                Tell us more about your job interview
               </DialogTitle>
               <DialogDescription>
                 <form onSubmit={onSubmit}>
                   <div>
                     <h2>
-                      Add Details about your job position/role, Job description
-                      and years of experience
+                      Add Details about your job position/role, description, and
+                      years of experience
                     </h2>
                     <div className="mt-7 my-3">
                       <label className="text-gray-600 font-bold">
@@ -145,32 +135,31 @@ function AddNewInterview() {
                       <Input
                         placeholder="Ex. Full Stack Developer"
                         required
-                        autocomplete="off"
+                        autoComplete="off"
                         onChange={(event) => setJobPosition(event.target.value)}
-                        className="mt-2 bg-slate-100 focus-visible:border-none hover:1px border-gray-400"
+                        className="mt-2 bg-slate-100"
                       />
                     </div>
                     <div className="my-3">
                       <label className="text-gray-600 font-bold">
-                        Job Description / Tech Stack{" "}
+                        Job Description / Tech Stack
                       </label>
                       <Textarea
-                        className="mt-2 bg-slate-100 focus-visible:border-none hover:1px border-gray-400"
+                        className="mt-2 bg-slate-100"
                         placeholder="Ex. ReactJS, NextJS, TypeScript, Java, Python etc."
-                        autocomplete="off"
+                        autoComplete="off"
                         required
                         onChange={(event) => setJobDesc(event.target.value)}
                       />
                     </div>
                     <div className="my-3">
                       <label className="text-gray-600 font-bold">
-                        Years of experience
+                        Years of Experience
                       </label>
                       <Input
-                        className="mt-2 bg-slate-100 mb-5 focus-visible:border-none hover:1px border-gray-400"
+                        className="mt-2 bg-slate-100 mb-5"
                         placeholder="Ex. 5"
                         type="number"
-                        autocomplete="off"
                         required
                         max="50"
                         onChange={(event) =>
