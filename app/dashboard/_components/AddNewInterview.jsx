@@ -32,25 +32,26 @@ function AddNewInterview() {
   const { isSignedIn, user } = useUser();
 
   const onSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  e.preventDefault();
+  setLoading(true);
 
-    const InputPrompt = `Job Position: ${jobPosition}, Job Description: ${jobDesc}, Years of Experience: ${jobExperience}. Depends on Job Position, Job Description & Years of Experience, give me the ${process.env.NEXT_PUBLIC_INTERVIEW_QUESTION_COUNT} interview questions along with answers in JSON format.`;
+  const InputPrompt = `Job Position: ${jobPosition}, Job Description: ${jobDesc}, Years of Experience: ${jobExperience}. Depends on Job Position, Job Description & Years of Experience, give me the ${process.env.NEXT_PUBLIC_INTERVIEW_QUESTION_COUNT} interview questions along with answers in JSON format.`;
 
-    try {
-      // Get response from chat AI session
-      const result = await chatSession.sendMessage(InputPrompt);
+  try {
+    // Get response from chat AI session
+    const result = await chatSession.sendMessage(InputPrompt);
 
-      // Log the raw response
-      const rawResponse = await result.response.text();
-      console.log("Raw Response:", rawResponse);
+    // Log the raw response
+    const rawResponse = await result.response.text();
+    console.log("Raw Response:", rawResponse);
 
-      // Clean and parse the response
-      let cleanedResponse = rawResponse
-        .replace(/```json/g, "") // Remove opening JSON code blocks
-        .replace(/```/g, "") // Remove closing code blocks
-        .replace(/\\n/g, "") // Remove escape sequences for new lines (if any)
-        .trim();
+    // Extract only the JSON part using regex (for more advanced cleaning)
+    let jsonStart = rawResponse.indexOf("[");
+    let jsonEnd = rawResponse.lastIndexOf("]");
+    
+    // Validate if the array markers were found
+    if (jsonStart !== -1 && jsonEnd !== -1) {
+      let cleanedResponse = rawResponse.substring(jsonStart, jsonEnd + 1);
 
       try {
         const MockJsonResp = JSON.parse(cleanedResponse); // Parse JSON
@@ -83,12 +84,16 @@ function AddNewInterview() {
       } catch (parseError) {
         console.error("JSON Parsing Error:", parseError, cleanedResponse);
       }
-    } catch (error) {
-      console.error("Error during AI session or DB insertion:", error);
+    } else {
+      console.error("No valid JSON found in response");
     }
+  } catch (error) {
+    console.error("Error during AI session or DB insertion:", error);
+  }
 
-    setLoading(false);
-  };
+  setLoading(false);
+};
+
 
   return (
     <>
