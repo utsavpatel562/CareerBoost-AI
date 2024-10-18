@@ -47,37 +47,44 @@ function AddNewInterview() {
 
       // Clean and parse the response
       let cleanedResponse = rawResponse
-        .replace(/```json/g, "")
-        .replace(/```/g, "")
+        .replace(/```json/g, "") // Remove opening JSON code blocks
+        .replace(/```/g, "") // Remove closing code blocks
+        .replace(/\\n/g, "") // Remove escape sequences for new lines (if any)
         .trim();
-      const MockJsonResp = JSON.parse(cleanedResponse); // Parse JSON
 
-      // Optimistic UI Update (Show data immediately)
-      setJsonResponse(MockJsonResp);
+      try {
+        const MockJsonResp = JSON.parse(cleanedResponse); // Parse JSON
+        console.log("Parsed Response:", MockJsonResp);
 
-      // Insert into DB
-      const resp = await db
-        .insert(MockInterview)
-        .values({
-          mockId: uuidv4(),
-          jsonMockResp: cleanedResponse, // Store cleaned JSON
-          jobPosition: jobPosition,
-          jobDesc: jobDesc,
-          jobExperience: jobExperience,
-          createdBy: user?.primaryEmailAddress?.emailAddress,
-          createdAt: moment().format("DD-MM-yyyy"),
-        })
-        .returning({ mockId: MockInterview.mockId });
+        // Optimistic UI Update (Show data immediately)
+        setJsonResponse(MockJsonResp);
 
-      console.log("Inserted ID: ", resp);
+        // Insert into DB
+        const resp = await db
+          .insert(MockInterview)
+          .values({
+            mockId: uuidv4(),
+            jsonMockResp: cleanedResponse, // Store cleaned JSON
+            jobPosition: jobPosition,
+            jobDesc: jobDesc,
+            jobExperience: jobExperience,
+            createdBy: user?.primaryEmailAddress?.emailAddress,
+            createdAt: moment().format("DD-MM-yyyy"),
+          })
+          .returning({ mockId: MockInterview.mockId });
 
-      // After insertion, update UI and route to the new interview
-      if (resp) {
-        setOpenDialog(false);
-        router.push("/dashboard/interview/" + resp[0]?.mockId);
+        console.log("Inserted ID: ", resp);
+
+        // After insertion, update UI and route to the new interview
+        if (resp) {
+          setOpenDialog(false);
+          router.push("/dashboard/interview/" + resp[0]?.mockId);
+        }
+      } catch (parseError) {
+        console.error("JSON Parsing Error:", parseError, cleanedResponse);
       }
     } catch (error) {
-      console.error("Error parsing or inserting data:", error);
+      console.error("Error during AI session or DB insertion:", error);
     }
 
     setLoading(false);
@@ -136,7 +143,9 @@ function AddNewInterview() {
                         placeholder="Ex. Full Stack Developer"
                         required
                         autoComplete="off"
-                        onChange={(event) => setJobPosition(event.target.value)}
+                        onChange={(event) =>
+                          setJobPosition(event.target.value)
+                        }
                         className="mt-2 bg-slate-100"
                       />
                     </div>
