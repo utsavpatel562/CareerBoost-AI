@@ -119,7 +119,11 @@ function Interview({ params }) {
                     <MdOutlineVideocam className="w-5 h-5" />
                     Enable Web Cam and Microphone
                   </Button>
-                  <Link
+                 
+                </div>
+              </>
+            )}
+             <Link
                     href={
                       "/dashboard/interview/" + params.interviewId + "/start"
                     }
@@ -129,9 +133,6 @@ function Interview({ params }) {
                       Start Interview
                     </Button>
                   </Link>
-                </div>
-              </>
-            )}
           </div>
         </div>
         <div className="flex justify-end items-end"></div>
