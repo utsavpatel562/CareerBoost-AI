@@ -62,8 +62,5 @@ Follow these steps to get the project up and running on your local machine.
 ### 📜 License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-### 📞 Contact
-For any questions or inquiries, please reach out to utsavpatel562@gmail.com
-
 Happy coding! 🎉
 Feel free to customize this README further based on your project's specific details and requirements.
