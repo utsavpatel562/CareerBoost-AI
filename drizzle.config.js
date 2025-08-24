@@ -3,6 +3,6 @@ export default {
   dialect: "postgresql", // "mysql" | "sqlite" | "postgresql"
   schema: "./utils/schema.js",
   dbCredentials:{
-    url:'YOUR API KEY'
+    url:'NEXT_PUBLIC_DRIZZLE_DB_URL'
   }
 };

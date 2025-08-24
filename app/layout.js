@@ -12,9 +12,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+   <html lang="en">
+        <head>
+          {/* Add your logo path here */}
+          <link rel="icon" href="/logo4.png" sizes="any" />
+          {/* or use PNG/SVG */}
+          {/* <link rel="icon" href="/logo.png" type="image/png" /> */}
+        </head>
+        <body className={inter.className}>{children}</body>
+      </html>
     </ClerkProvider>
   );
 }

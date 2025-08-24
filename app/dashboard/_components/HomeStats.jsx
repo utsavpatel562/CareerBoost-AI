@@ -1,156 +1,99 @@
 import React from "react";
-const HomeStats = () => {
+
+function HomeStats() {
   return (
-    <>
-      <div className="text-center mt-10" id="howitworks">
-        <h2 className="text-gray-800 font-extrabold text-[30px] md:text-[40px]">
-          HOW IT WORKS
-        </h2>
-      </div>
-      <div className="p-14 grid md:grid-cols-2 gap-5">
-        <div className="rounded-lg border-4 border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-lg sm:p-6">
-          <div className="text-lg my-4 font-semibold">
-            <label className="bg-green-600 pl-3 pr-3 p-2 rounded-full text-white">
-              Step - 1
-            </label>
-          </div>
-          <div className="md:p-1 lg:p-1 sm:p-0">
-            <a href="#">
-              <h3 className="text-lg font-semibold text-green-700">
-                Sign Up & Create Your Profile
-              </h3>
-            </a>
-
-            <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 md:text-justify sm:text-center">
-              Start by signing up for CareerBoost-AI and creating your profile
-              in just a few clicks. Fill in your details like industry, role,
-              and career goals to get the most accurate mock interview
-              experiences. Your information helps us tailor the questions and
-              feedback to match your career needs.
-            </p>
-
-            <a
-              href="#"
-              className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-green-600"
-            >
-              Find out more
-              <span
-                aria-hidden="true"
-                className="block transition-all group-hover:ms-0.5 rtl:rotate-180"
-              >
-                &rarr;
-              </span>
-            </a>
-          </div>
+    <div className="select-none bg-gray-900 p-4 min-h-screen">
+      <div className="flex flex-col md:flex-row items-center justify-between md:gap-32 p-4 md:p-10">
+        {/* For Side Image */}
+        <div className="w-full md:w-fit flex justify-center md:justify-start mb-8 md:mb-0">
+          <img
+            src="model.png"
+            alt="img"
+            className="w-3/4 sm:w-2/3 md:w-[640px] max-w-full"
+          />
         </div>
-        <div className="rounded-lg border-4 border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-lg sm:p-6">
-          <div className="text-lg my-4 font-semibold">
-            <label className="bg-green-600 pl-3 pr-3 p-2 rounded-full text-white">
-              Step - 2
-            </label>
-          </div>
-          <div className="md:p-1 lg:p-1 sm:p-0">
-            <a href="#">
-              <h3 className="text-lg text-green-700 font-semibold">
-                Choose Your Interview Type
-              </h3>
-            </a>
 
-            <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 text-justify">
-              Select from a wide range of interview types, such as technical,
-              behavioral, or case-based interviews. Whether you're preparing for
-              a software engineering role or a marketing position,
-              CareerBoost-AI provides customized mock interview scenarios to fit
-              your needs.
-            </p>
-
-            <a
-              href="#"
-              className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-green-600"
-            >
-              Find out more
-              <span
-                aria-hidden="true"
-                className="block transition-all group-hover:ms-0.5 rtl:rotate-180"
-              >
-                &rarr;
+        {/* Right Content */}
+        <div className="w-full">
+          <div
+            className="py-6 md:py-10 text-center md:text-right"
+            id="howitworks"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#cbcecc] to-[#828386]">
+                HOW IT WORKS
               </span>
-            </a>
-          </div>
-        </div>
-        <div className="rounded-lg border-4 border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-lg sm:p-6">
-          <div className="text-lg my-4 font-semibold">
-            <label className="bg-green-600 pl-3 pr-3 p-2 rounded-full text-white">
-              Step - 3
-            </label>
-          </div>
-          <div className="md:p-1 lg:p-1 sm:p-0">
-            <a href="#">
-              <h3 className="mt-0.5 text-lg font-semibold text-green-700">
-                AI-Driven Mock Interview
-              </h3>
-            </a>
-
-            <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 text-justify">
-              Experience a real-time, dynamic mock interview powered by
-              cutting-edge AI. Answer questions based on the job role you
-              selected, while the AI adapts to your responses to simulate an
-              actual interview setting. Practice as many times as you want to
-              refine your skills.
+            </h2>
+            <p className="text-slate-300 py-2 text-sm sm:text-base">
+              Practice. Improve. Succeed. The CareerBoost-AI Way.
             </p>
-
-            <a
-              href="#"
-              className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-green-600"
-            >
-              Find out more
-              <span
-                aria-hidden="true"
-                className="block transition-all group-hover:ms-0.5 rtl:rotate-180"
-              >
-                &rarr;
-              </span>
-            </a>
           </div>
-        </div>
-        <div className="rounded-lg border-4 border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-lg sm:p-6">
-          <div className="text-lg my-4 font-semibold">
-            <label className="bg-green-600 pl-3 pr-3 p-2 rounded-full text-white">
-              Step - 4
-            </label>
-          </div>
-          <div className="md:p-1 lg:p-1 sm:p-0">
-            <a href="#">
-              <h3 className="mt-0.5 text-lg font-semibold text-green-700">
-                Get Detailed Feedback
-              </h3>
-            </a>
 
-            <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 text-justify">
-              After completing your interview, receive immediate feedback with
-              insights on your strengths and areas for improvement.
-              CareerBoost-AI provides in-depth suggestions and tips to enhance
-              your answers, helping you get interview-ready. Use this feedback
-              to continuously improve and ace real interviews.
-            </p>
+          {/* Steps Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full mx-auto">
+            {/* Card 1 */}
+            <div className="p-5 rounded-lg backdrop-blur-lg border border-white/10 bg-gradient-to-tr from-black/60 to-black/40 shadow-lg hover:shadow-2xl hover:shadow-white/20 hover:scale-105 active:scale-95 transition-all duration-300 ease-out cursor-pointer hover:border-white/30 hover:bg-gradient-to-tr hover:from-white/10 hover:to-black/40 group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+              <h2 className="text-slate-50 font-medium text-lg">
+                <span className="text-blue-300">STEP 1</span> Sign Up & Create
+                Your Profile
+              </h2>
+              <p className="text-slate-100 py-2 text-sm sm:text-base">
+                Start by signing up for CareerBoost-AI and creating your profile
+                in just a few clicks. Your information helps us tailor the
+                questions and feedback to match.
+              </p>
+            </div>
 
-            <a
-              href="#"
-              className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-green-600"
-            >
-              Find out more
-              <span
-                aria-hidden="true"
-                className="block transition-all group-hover:ms-0.5 rtl:rotate-180"
-              >
-                &rarr;
-              </span>
-            </a>
+            {/* Card 2 */}
+            <div className="p-5 rounded-lg backdrop-blur-lg border border-white/10 bg-gradient-to-tr from-black/60 to-black/40 shadow-lg hover:shadow-2xl hover:shadow-white/20 hover:scale-105 active:scale-95 transition-all duration-300 ease-out cursor-pointer hover:border-white/30 hover:bg-gradient-to-tr hover:from-white/10 hover:to-black/40 group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+              <h2 className="text-slate-50 font-medium text-lg">
+                <span className="text-blue-300">STEP 2</span> Choose Your
+                Interview Type
+              </h2>
+              <p className="text-slate-100 py-2 text-sm sm:text-base">
+                Select from a wide range of interview types, whether you're
+                preparing for a software engineering role or a marketing
+                position, we provide customized mock interview scenarios to fit
+                your needs.
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="p-5 rounded-lg backdrop-blur-lg border border-white/10 bg-gradient-to-tr from-black/60 to-black/40 shadow-lg hover:shadow-2xl hover:shadow-white/20 hover:scale-105 active:scale-95 transition-all duration-300 ease-out cursor-pointer hover:border-white/30 hover:bg-gradient-to-tr hover:from-white/10 hover:to-black/40 group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+              <h2 className="text-slate-50 font-medium text-lg">
+                <span className="text-blue-300">STEP 3</span> AI-Driven Mock
+                Interview
+              </h2>
+              <p className="text-slate-100 py-2 text-sm sm:text-base">
+                Experience a real-time, dynamic mock interview powered by AI,
+                which adapts to your responses to simulate an actual interview
+                setting. Practice as many times as you want to refine your
+                skills.
+              </p>
+            </div>
+
+            {/* Card 4 */}
+            <div className="p-5 rounded-lg backdrop-blur-lg border border-white/10 bg-gradient-to-tr from-black/60 to-black/40 shadow-lg hover:shadow-2xl hover:shadow-white/20 hover:scale-105 active:scale-95 transition-all duration-300 ease-out cursor-pointer hover:border-white/30 hover:bg-gradient-to-tr hover:from-white/10 hover:to-black/40 group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+              <h2 className="text-slate-50 font-medium text-lg">
+                <span className="text-blue-300">STEP 4</span> Get Detailed
+                Feedback
+              </h2>
+              <p className="text-slate-100 py-2 text-sm sm:text-base">
+                After completing your interview, receive immediate feedback with
+                insights on your strengths and areas for improvement.
+                CareerBoost-AI provides in-depth suggestions and tips to enhance
+                your answers.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
-};
+}
 
 export default HomeStats;
