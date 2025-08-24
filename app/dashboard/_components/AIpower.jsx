@@ -1,9 +1,13 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import React from "react";
 
 const AIpower = () => {
   return (
-    <section className="min-h-screen w-full px-4 sm:px-6 md:px-8 xl:px-20 text-white bg-gray-900 flex items-center">
+    <section
+      id="insights"
+      className="min-h-screen w-full px-4 sm:px-6 md:px-8 xl:px-20 text-white bg-gray-900 flex items-center"
+    >
       <div className="flex container flex-col md:flex-row items-center md:items-start gap-5 sm:gap-12 md:gap-16 w-full">
         {/* Left Side */}
         <div className="w-full md:w-1/2 relative sm:px-10 md:p-0">
@@ -59,12 +63,19 @@ const AIpower = () => {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-2 items-center col-span-3 md:mt-0 mt-2 md:col-span-4 justify-center">
-              <Button className="rounded-full bg-slate-700 hover:bg-blue-400 border border-slate-700 w-full sm:w-auto">
-                GitHub
-              </Button>
-              <Button className="rounded-full bg-slate-700 hover:bg-blue-400 border border-slate-700 w-full sm:w-auto">
-                LinkedIn
-              </Button>
+              <Link href={"https://github.com/utsavpatel562"} target="_blank">
+                <Button className="rounded-full bg-slate-700 hover:bg-blue-400 border border-slate-700 w-full sm:w-auto">
+                  GitHub
+                </Button>
+              </Link>
+              <Link
+                href={"https://www.linkedin.com/in/utsav-patel-coder"}
+                target="_blank"
+              >
+                <Button className="rounded-full bg-slate-700 hover:bg-blue-400 border border-slate-700 w-full sm:w-auto">
+                  LinkedIn
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

@@ -135,7 +135,7 @@ export default () => {
               CareerBoost-AI.
             </p>
             <div className="justify-center items-center gap-x-3 sm:flex">
-              <a href="#">
+              <a href="/#insights">
                 <button className="w-full px-3 py-2.5 text-gray-400 bg-gray-900 duration-150 outline-none rounded-lg shadow sm:max-w-sm sm:w-auto">
                   Know More
                 </button>

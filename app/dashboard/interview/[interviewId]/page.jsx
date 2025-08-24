@@ -130,6 +130,14 @@ function Interview({ params }) {
                 Start Interview
               </Button>
             </Link>
+            <Link
+              href={"/dashboard/interview/" + params.interviewId + "/start"}
+            >
+              <Button className="md:w-[300px] mt-5 gap-1 bg-green-600 hover:bg-green-500">
+                <VscDebugStart className="w-5 h-5" />
+                Start Interview
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="flex justify-end items-end"></div>

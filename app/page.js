@@ -1,3 +1,4 @@
+// Code by Utsav Patel
 import HeroSection from "./dashboard/_components/HeroSection";
 import Footer from "./dashboard/_components/Footer";
 import AIPower from "./dashboard/_components/AIpower";
