@@ -56,7 +56,7 @@ export default function Page() {
               </p>
             </div>
 
-            <SignIn />
+            <SignIn afterSignOutUrl="/dashboard" />
           </div>
         </main>
       </div>
