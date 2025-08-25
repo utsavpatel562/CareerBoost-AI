@@ -68,22 +68,22 @@ function InterviewCard({ interview, onDeleteSuccess }) {
           </h3>
           <Button
             size="sm"
-            className="bg-green-600 hover:bg-green-700 w-full mt-4"
-            onClick={onStart}
+            className="w-full mt-4 bg-slate-600 hover:bg-slate-700 active:bg-slate-600 duration-150"
+            onClick={onFeedbackPress}
           >
-            Start
+            Feedback
           </Button>
-          <div className="flex justify-between mt-2 gap-1">
+          <div className="flex items-center justify-between mt-2 gap-1">
             <Button
               size="sm"
-              className="w-full bg-slate-600 hover:bg-slate-700"
-              onClick={onFeedbackPress}
+              className="bg-green-600 hover:bg-green-700 w-full"
+              onClick={onStart}
             >
-              Feedback
+              Start
             </Button>
             <Button
               size="sm"
-              className="bg-red-600 hover:bg-red-700 w-fit"
+              className="bg-red-600 hover:bg-red-700 w-full"
               onClick={onDelete}
             >
               <FaTrashCan />
