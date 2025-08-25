@@ -5,7 +5,7 @@ export default function Page() {
   return (
     <section className="bg-white">
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
-        <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
+        <section className="relative flex h-32 items-end bg-gradient-to-r from-slate-900 via-slate-600 to-slate-900 lg:col-span-5 lg:h-full xl:col-span-6">
           <img
             alt=""
             src="/bg8.jpg"
@@ -14,7 +14,7 @@ export default function Page() {
 
           <div className="hidden lg:relative lg:block lg:p-12">
             <a className="block text-white" href="#">
-              <img src="/logo8.png" width={200} height={200} />
+              <img src="/logo.png" width={200} height={200} />
             </a>
 
             <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
@@ -22,9 +22,9 @@ export default function Page() {
             </h2>
 
             <p className="mt-4 leading-relaxed text-white/90">
-              "Elevate your career with intelligent mock interviews and
+              Elevate your career with intelligent mock interviews and
               personalized resume building. Transform your job search and stand
-              out to employers with our advanced AI technology."
+              out to employers with our advanced AI technology.
             </p>
           </div>
         </section>
@@ -50,28 +50,13 @@ export default function Page() {
               </h1>
 
               <p className="mt-4 leading-relaxed text-gray-500 mb-10 text-justify">
-                "Elevate your career with intelligent mock interviews and
+                Elevate your career with intelligent mock interviews and
                 personalized resume building. Transform your job search and
-                stand out to employers with our advanced AI technology."
+                stand out to employers with our advanced AI technology.
               </p>
             </div>
 
-            <SignUp
-              appearance={{
-                elements: {
-                  formButtonPrimary: {
-                    backgroundColor: "#22c55e",
-                    color: "#fff",
-                    padding: "10px 20px",
-                    borderRadius: "5px",
-                    border: "none",
-                    ":hover": {
-                      backgroundColor: "#16a34a",
-                    },
-                  },
-                },
-              }}
-            />
+            <SignUp />
           </div>
         </main>
       </div>
