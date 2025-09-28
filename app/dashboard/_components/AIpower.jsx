@@ -40,7 +40,7 @@ const AIpower = () => {
             {[
               { src: "/nextjs.png", name: "NextJS" },
               { src: "/gemini.png", name: "Gemini AI" },
-              { src: "/React.png", name: "ReactJS" },
+              { src: "/react.png", name: "ReactJS" },
               { src: "/js.png", name: "JavaScript" },
               { src: "/drizzle.png", name: "Drizzle ORM" },
               { src: "/nodejs.png", name: "NodeJS" },
